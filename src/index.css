@@ -1,13 +1,141 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+:root {
+  --rich-black-fogra-39: #050505ff;
+  --blue-ryb: #004fffff;
+  --true-blue: #4464adff;
+  --maximum-blue: #31afd4ff;
+  --dark-sea-green: #78c091ff;
+  --crimson: #d7263dff;
+  --purpureus: #9055a2ff;
+  --light-cyan: #D9FFF5ff;
+  --cosmic-latte: #fff4e4ff;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  font-family: "Open Sans", serif;
+  margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 2px;
+  font-family: "Noto Sans", serif;
+}
+
+/* General links */
+
+a {
+  color: var(--blue-ryb);
+  font-size: 16px;
+}
+
+a:hover {
+  color: var(--true-blue);
+}
+
+a:visited {
+  color: var(--blue-ryb);
+}
+
+@media only screen and (min-width: 900px) {
+  a {
+    transition: font-size 300ms;
+  }
+
+  a:hover {
+    font-size: 18px;
+    transition: font-size 300ms;
+  }
+}
+
+/* Text link */
+
+a.textLink {
+  color: var(--rich-black-fogra-39);
+  text-decoration: none;
+  font-size: 24px;
+}
+
+a.textLink:hover {
+  color: var(--rich-black-fogra-39);
+}
+
+@media only screen and (min-width: 900px) {
+  a.textLink {
+    transition: font-size 300ms;
+  }
+
+  a.textLink:hover {
+    font-size: 26px;
+    transition: font-size 300ms;
+  }
+}
+
+a.textLink:visited {
+  color: var(--rich-black-fogra-39);
+}
+
+div.flexbox {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+div.card {
+  border: 1px solid var(--rich-black-fogra-39);
+  border-radius: 4px;
+  background-color: #F2F5FF;
+  padding: 8px;
+  margin: 8px;
+}
+
+/* MARK: HEADER BAR */
+
+#header {
+  position: fixed;
+  width: 100%;
+  height: 80px;
+  top: 0;
+  left: 0;
+}
+
+.header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  flex-wrap: wrap;
+  background-color: var(--dark-sea-green);
+  margin: 0;
+  height: 80px;
+}
+
+.header-bar a {
+  margin: 0 8px;
+}
+
+/* MARK: BODY */
+
+#body {
+  margin: 0;
+  width: 100%;
+}
+
+/* MARK: About Me */
+
+#about-me {
+  background-color: var(--light-cyan);
+  margin-top: 80px;
+  padding: 8px 2%;
+}
+
+/* MARK: About Me - Work Experience Transition */
+
+#about-exp-transition {
+  height: 8px;
+  background-image: linear-gradient(var(--light-cyan), var(--cosmic-latte));
+  width: 100%;
+}
+
+/* MARK: Work Experience */
+
+#work-exp {
+  background-color: var(--cosmic-latte);
+  padding: 8px 2%;
 }

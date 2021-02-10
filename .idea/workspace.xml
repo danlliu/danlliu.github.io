@@ -2,15 +2,30 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="14585081-9a51-4d65-ad95-987ee83ea505" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Education.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/HeaderBar.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Coursework.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/PersonalProjects.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Transition.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/WorkExperience.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bootstrap.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/clang.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cpp.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/css.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/html5.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/js.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/swift.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/favicon.ico" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.test.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/logo192.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/logo512.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Education.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Education.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HeaderBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/HeaderBar.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logo.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/react.svg" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,16 +58,19 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.standard" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.standard" value="" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.toDoOptions" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/public" />
       <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/src" />
     </key>
   </component>
   <component name="ServiceViewManager">
@@ -79,7 +97,8 @@
       <updated>1612839332396</updated>
       <workItem from="1612839335393" duration="662000" />
       <workItem from="1612840116010" duration="9763000" />
-      <workItem from="1612883702750" duration="1430000" />
+      <workItem from="1612883702750" duration="4061000" />
+      <workItem from="1612905804565" duration="14125000" />
     </task>
     <servers />
   </component>
@@ -90,6 +109,14 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="320" y="96" key="#ESLint" timestamp="1612927969704">
+      <screen x="0" y="25" width="1440" height="817" />
+    </state>
+    <state x="320" y="96" key="#ESLint/0.25.1440.817@0.25.1440.817" timestamp="1612927969704" />
+    <state x="184" y="92" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1612911471497">
+      <screen x="0" y="25" width="1440" height="817" />
+    </state>
+    <state x="184" y="92" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.25.1440.817@0.25.1440.817" timestamp="1612911471497" />
     <state x="458" y="184" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1612891699473">
       <screen x="0" y="25" width="1440" height="817" />
     </state>
@@ -98,5 +125,9 @@
       <screen x="0" y="25" width="1440" height="817" />
     </state>
     <state x="229" y="69" key="SettingsEditor/0.25.1440.817@0.25.1440.817" timestamp="1612840463233" />
+    <state x="385" y="81" width="670" height="676" key="search.everywhere.popup" timestamp="1612895358764">
+      <screen x="0" y="25" width="1440" height="817" />
+    </state>
+    <state x="385" y="81" width="670" height="676" key="search.everywhere.popup/0.25.1440.817@0.25.1440.817" timestamp="1612895358764" />
   </component>
 </project>

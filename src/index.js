@@ -23,7 +23,7 @@ ReactDOM.render(<Transition top={"var(--light-cyan)"} bottom={"var(--cosmic-latt
 
 ReactDOM.render(<WorkExperience/>, document.getElementById('workexperience'));
 
-ReactDOM.render(<Transition top={"var(--cosmic-latte)"} bottom={"var(--pale-purple)"}/>,
+ReactDOM.render(<Transition top={"var(--cosmic-latte)"} bottom={"var(--pale-silver)"}/>,
     document.getElementById('exp-project-transition'));
 
 ReactDOM.render(<PersonalProjects/>, document.getElementById('personalprojects'));
@@ -32,3 +32,12 @@ ReactDOM.render(<PersonalProjects/>, document.getElementById('personalprojects')
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+
+// EASTER EGGS
+
+// imma obfuscate this code so you can't figure out how to get the easter eggs
+// this is definitely going to come back and bite me when i need to debug
+
+let c=0;setInterval(()=>{if(c>0){c=c-1}},5000);let e=()=>{c++;};
+function f() {e();c>=10&&document.getElementById("party-cat").classList.add("found");if(c>=10){c=0;}}
+document.getElementById("education").children[0].firstChild.addEventListener("click", f);

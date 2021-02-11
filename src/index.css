@@ -11,7 +11,8 @@
   --pale-purple: #FFE4FAff;
   --light-yellow: #F8FFE5ff;
   --pale-spring-bud: #E4E6C3ff;
-  --pale-silver: #BFB7B6ff;
+  --pale-silver: #BFB7B633;
+  --mimi-pink: #EFCFE3ff;
   scroll-behavior: smooth;
 }
 
@@ -92,16 +93,19 @@ a.anchor {
 div.flexbox {
   display: flex;
   flex-wrap: wrap;
+  justify-content: flex-start;
 }
 
 div.wide-scroll {
+  justify-content: flex-start;
   flex-wrap: nowrap;
   width: 94%;
+  max-height: 154px;
   margin: 0 auto;
   overflow-x: scroll;
 }
 
-div.card, div.card-3, div.card-4 {
+div.card, div.card-wide, div.card-3, div.card-4 {
   border: 1px solid var(--rich-black-fogra-39);
   border-radius: 4px;
   background-color: #F2F5FF;
@@ -113,6 +117,10 @@ div.card, div.card-3, div.card-4 {
 
 div.card {
   min-width: 236px;
+}
+
+div.card-wide {
+  width: auto;
 }
 
 div.card-selected {
@@ -199,11 +207,11 @@ div.card-4 {
 /* MARK: Personal Projects */
 
 #personal-projects-div {
-  background-color: var(--pale-purple);
+  background-color: var(--pale-silver);
   padding: 8px 2%;
 }
 
-#personal-projects-div button {
+#personal-projects-div button.gallery {
   background-color: var(--pale-silver);
   opacity: 0.4;
   border: 1px solid var(--rich-black-fogra-39);
@@ -215,26 +223,53 @@ div.card-4 {
 
 /* MARK: Project Card Animation */
 
-.projectcard-enter {
-  display: inline-block;
-  transform: scaleX(0);
+div.projectcard-enter {
   opacity: 0.01;
+  max-width: 0;
+  min-width: 0;
+  flex-grow: 1;
 }
 
-.projectcard-enter.projectcard-enter-active {
-  display: inline-block;
+div.projectcard-enter.projectcard-enter-active {
   opacity: 1;
-  transition: opacity 500ms ease-in, width 500ms ease-in;
+  max-width: 400px;
+  min-width: 236px;
+  transition: opacity 500ms ease-in, max-width 500ms linear, min-width 500ms ease-in;
 }
 
-.projectcard-leave {
-  display: inline-block;
+div.projectcard-leave {
   opacity: 1;
+  max-width: 400px;
+  min-width: 236px;
+  flex-shrink: 1;
 }
 
-.projectcard-leave.projectcard-leave-active {
-  display: inline-block;
+div.projectcard-leave.projectcard-leave-active {
   opacity: 0.01;
-  transform: scaleX(0);
-  transition: opacity 500ms ease-out, width 500ms ease-out;
+  max-width: 0;
+  min-width: 0;
+  transition: opacity 500ms ease-out, max-width 500ms ease-out, min-width 500ms ease-out;
+}
+
+/* EASTER EGGS */
+/*
+  Hey you! Yes, you! I know you're reading this. Try to figure out how to get to the easter eggs :D It's cool and all to
+  look through code, but some things are meant to be discovered. Hope you're enjoying my website!
+ */
+
+div#easter-eggs div {
+  visibility: hidden;
+  position: fixed;
+  top: 128px;
+  right: 128px;
+  width: 256px;
+  height: 128px;
+  padding: 4px;
+  border: var(--purpureus) 2px solid;
+  border-radius: 4px;
+  background-color: var(--pale-purple);
+}
+
+div#easter-eggs div.found {
+  visibility: visible;
 }

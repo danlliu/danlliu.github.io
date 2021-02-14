@@ -33,7 +33,14 @@ let courses = [
                     " a cache. The simulator supports direct-mapped, set-associative, and fully associative caches" +
                     " of various sizes, and indicates each transfer of memory between main memory, the cache, and" +
                     " the processor."}
-        ], language: "c"}
+        ], language: "c"},
+    {course: "EECS 482", title: "Introduction to Operating Systems", projects: [
+            {name: "Disk Scheduler", description: "Used the functionality of threads, mutexes, and condition" +
+                    " variables to simulate a disk access scheduler, where requests for tracks come in from multiple" +
+                    " threads and are serviced based on the shortest seek time."},
+            {name: "Thread Library", description: "Implemented a thread library, including thread functionality," +
+                    " mutexes, condition variables, and handling of multiple threads on one CPU core."}
+        ], language: "cpp"}
 ];
 
 class Coursework extends React.Component {

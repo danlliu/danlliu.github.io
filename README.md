@@ -13,3 +13,4 @@ socket.io logo from [Wikimedia Commons](https://upload.wikimedia.org/wikipedia/c
 
 ## Citations for Easter Eggs
 Party Cat from EECS281 and EECS370 Slack. No idea where they got it from.  
+Jinx "helo" picture provided by Abigail Fox. Check out her website at https://abigailrose.github.io/!

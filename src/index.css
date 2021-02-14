@@ -50,6 +50,10 @@ a:visited {
     font-size: 18px;
     transition: font-size 300ms;
   }
+
+  a.nonexpanding:hover {
+    font-size: 16px;
+  }
 }
 
 /* Text link */
@@ -77,6 +81,20 @@ a.textLink:visited {
     font-size: 26px;
     transition: font-size 300ms;
   }
+}
+
+a.sneaky {
+  color: black;
+  text-decoration: none;
+}
+
+a.sneaky:hover {
+  color: black;
+  font-size: 16px;
+}
+
+a.sneaky:visited {
+  color: black;
 }
 
 /* MARK: Anchor Links */
@@ -257,13 +275,17 @@ div.projectcard-leave.projectcard-leave-active {
   look through code, but some things are meant to be discovered. Hope you're enjoying my website!
  */
 
+.blink {
+  background-color: var(--true-blue) !important;
+}
+
 div#easter-eggs div {
   visibility: hidden;
   position: fixed;
   top: 128px;
   right: 128px;
   width: 256px;
-  height: 128px;
+  min-height: 128px;
   padding: 4px;
   border: var(--purpureus) 2px solid;
   border-radius: 4px;

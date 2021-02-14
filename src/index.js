@@ -38,6 +38,7 @@ reportWebVitals();
 // imma obfuscate this code so you can't figure out how to get the easter eggs
 // this is definitely going to come back and bite me when i need to debug
 
+let b=document.getElementById("education").children[0].firstChild;
 let c=0;setInterval(()=>{if(c>0){c=c-1}},5000);let e=()=>{c++;};
-function f() {e();c>=10&&document.getElementById("party-cat").classList.add("found");if(c>=10){c=0;}}
-document.getElementById("education").children[0].firstChild.addEventListener("click", f);
+function f() {e();c>=10&&document.getElementById("party-cat").classList.add("found");if(c>=10){c=0;} if(c>=3){b.classList.add("blink");setTimeout(()=>b.classList.remove("blink"), 250);}}
+b.addEventListener("click", f);

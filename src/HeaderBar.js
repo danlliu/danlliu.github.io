@@ -4,8 +4,7 @@ let links = [
     {section: "about-me", text: "about me"},
     {section: "work-exp", text: "work experience"},
     {section: "personal-projects", text: "personal projects"},
-    {section: "more-hre", text: "you must construct additional pylons"},
-    {section: "more-hre", text: "run"}
+    {section: "more-hre", text: "you must construct additional pylons"}
 ];
 
 class HeaderBar extends React.Component {

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>daniel liu</title>
+
+  <link href="/style/main.css" rel="stylesheet" />
+  <script src="/script/main.js"></script>
+</head>
+
+<body class="bg-black text-white">
+  <div class="h-screen w-screen overflow-scroll snap-proximity snap-y">
+    <!-- Section 0: banner + contents -->
+    <div class="snap-start p-4 min-h-screen w-screen">
+    {% include "banner.html" %}
+    </div>
+    <!-- Section 1: education -->
+    <div class="snap-start p-4 min-h-screen w-screen" id="education">
+    {% include "education.html" %}
+    </div>
+    <!-- Section 2: projects -->
+    <div class="snap-start p-4 min-h-screen w-screen" id="projects">
+    {% include "projects.html" %}
+    </div>
+    <!-- Section 3: work experience -->
+    <div class="snap-start p-4 min-h-screen w-screen" id="work_experience">
+    {% include "work_experience.html" %}
+    </div>
+  </div>
+</body>
+
+</html>

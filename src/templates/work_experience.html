@@ -1,0 +1,21 @@
+<h1 class="m-4 font-mono text-3xl">$ cd ~/work_experience</h1>
+<p class="m-4 font-mono text-2xl">$ ls</p>
+
+{% for experience in work_exp.experiences %}
+<div class="snap-start m-4 p-4 rounded-xl border-2 border-yellow">
+  <h2 class="m-2 text-xl font-bold">{{experience.company}}</h2>
+  <h3 class="m-2 text-lg font-bold">{{experience.location}}</h3>
+  {% if 'end' in experience %}
+  <h4 class="m-2 text-lg font-bold">{{experience.start}} – {{experience.end}}</h4>
+  {% else %}
+  <h4 class="m-2 text-lg font-bold">{{experience.start}} – <span class="text-purple">present</span></h4>
+  {% endif %}
+  <hr class="border-white"/>
+  <h4 class="m-2 text-lg">{{experience.position}}</h4>
+  <ul class="m-2 list-disc list-inside">
+    {% for bullet in experience.bullets %}
+    <li>{{bullet}}</li>
+    {% endfor %}
+  </ul>
+</div>
+{% endfor %}

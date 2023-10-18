@@ -1,0 +1,53 @@
+{% macro lsal_entry(ch) -%}
+{%- if ch == '-' -%}
+<span class="text-gray">-</span>
+{%- elif ch == 'd' -%}
+<span class="text-blue">d</span>
+{%- elif ch == 'l' -%}
+<span class="text-aqua">l</span>
+{%- elif ch == 'r' -%}
+<span class="text-yellow">r</span>
+{%- elif ch == 'w' -%}
+<span class="text-red">w</span>
+{%- elif ch == 'x' -%}
+<span class="text-green">x</span>
+{%- elif ch == '.' -%}
+<span>.</span>
+{%- endif -%}
+{%- endmacro %}
+
+<div class="flex flex-row flex-wrap place-items-center font-mono">
+  <div class="basis-0 sm:basis-1/12"></div>
+  <div class="basis-full sm:basis-1/4">
+    <pre class="text-sm md:text-lg lg:text-xl text-purple">
+{{banner.asciiart}}
+    </pre>
+  </div>
+  <div class="snap-start md:snap-align-none text-sm lg:text-lg basis-1/2 sm:basis-1/3">
+    <pre>
+daniel@danlliu.github.io
+------------------------
+<span class="text-yellow">OS:</span> macOS, Linux
+<span class="text-yellow">Host:</span> Ann Arbor, MI
+<span class="text-yellow">Theme:</span> Dark
+<span class="text-yellow">Terminal:</span> <span id="banner_terminal">zsh</span>
+<span class="text-yellow">Contact:</span> <a class="text-blue underline" href="mailto:danlliu@umich.edu">danlliu [at] umich.edu</a>
+<span class="text-yellow">Resume:</span> <a class="text-blue underline" href="/resume.pdf" target="_blank">./resume.pdf</a>
+    </pre>
+  </div>
+</div>
+
+<pre class="text-xs md:text-sm lg:text-lg select-none" id="banner_tableofcontents">
+daniel@danlliu.github.io $ ls -al
+
+  {% for c in 'drwxr-xr-x' -%}{{lsal_entry(c)}}{% endfor %} <span class="text-gray">   -</span> <span class="text-orange">daniel</span> <a onclick="click_dot()"><span class="text-blue underline">.</span></a>
+{%- for section in banner.sections -%}
+{%- if section.type == 'file' %}
+  {% for c in section.perm_bits -%}{{lsal_entry(c)}}{% endfor %} {{"%4s"|format(section.size)}} <span class="text-orange">daniel</span> <a href="{{section.url}}" target="_blank"><span class="text-green underline">{{section.name}}</span></a>
+{%- elif section.type == 'executable' %}
+  {% for c in section.perm_bits -%}{{lsal_entry(c)}}{% endfor %} {{"%4s"|format(section.size)}} <span class="text-orange">daniel</span> <a href="{{section.url}}" target="_blank"><span class="text-darkgreen underline">{{section.name}}</span></a>
+{%- elif section.type == 'symlink' %}
+  {% for c in section.perm_bits -%}{{lsal_entry(c)}}{% endfor %} {{"%4d"|format(section.name|length)}} <span class="text-orange">daniel</span> <a href="#{{section.tag}}"><span class="text-aqua underline">{{section.name}}</span> <span class="hidden sm:inline text-gray">-&gt;</span> <span class="hidden sm:inline text-blue">#{{section.tag}}</span></a>
+{%- endif -%}
+{%- endfor %}
+</pre>

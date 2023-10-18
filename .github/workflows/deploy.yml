@@ -1,0 +1,34 @@
+name: Deploy website
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout
+      - uses: actions/setup-node
+        with:
+          node-version: '10.1.0'
+      - uses: actions/setup-python@
+        with:
+          python-version: '3.11'
+    
+      - name: Install dependencies
+        run: setup.sh
+
+      - name: Run make
+        run: make
+      
+      - name: Deploy to Github Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: deploy
+          publish_dir: ./build
+          force_orphan: true
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'

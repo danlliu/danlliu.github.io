@@ -1,0 +1,29 @@
+<h1 class="m-4 font-mono text-3xl">$ cd ~/projects</h1>
+<p class="m-4 font-mono text-2xl">$ ls | fzf</p>
+
+<div class="m-6 p-4 rounded border-green border-2">
+  <pre class="text-aqua">&gt; <input class="bg-black w-9/12 rounded text-white border-1 border-gray focus:outline-none focus:border-green" type="text" placeholder="search..." id="project_search_bar"></pre>
+  <pre class="text-gray flex flex-row gap-4">
+   <span>  <span id="projects_result_count">6 / 6</span></span>
+   <div class="h-px bg-gray flex-grow my-auto"></div>
+  </pre>
+<div id="projects_results">
+</div>
+<hr class="m-4"/>
+<div id="projects_descriptions">
+  {% for project in projects.projects %}
+  <div id="project_{{project.id}}" class="hidden">
+    <h1 class="mx-4 text-xl">{{project.name}}</h1>
+    {% if 'github' in project %}
+    <a class="inline-block p-2" href="{{project.github}}" target="_blank"><img class="inline-block align-middle" src="assets/github.png" height="16" width="16"/> <span class="align-middle text-sm"> view GitHub repository</span></a>
+    {% endif %}
+    <p class="m-2 p-2">{{project.description}}</p>
+  </div>
+  {% endfor %}
+</div>
+</div>
+
+<script>
+  let projects_projectdata = {{projects.project_json|safe}};
+</script>
+<script src="/script/project_search.js"></script>

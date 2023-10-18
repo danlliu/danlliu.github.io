@@ -9,11 +9,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout
-      - uses: actions/setup-node
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
           node-version: '10.1.0'
-      - uses: actions/setup-python@
+      - uses: actions/setup-python@v4
         with:
           python-version: '3.11'
     

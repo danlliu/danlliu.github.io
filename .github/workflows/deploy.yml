@@ -18,7 +18,7 @@ jobs:
           python-version: '3.11'
     
       - name: Install dependencies
-        run: setup.sh
+        run: ./setup.sh
 
       - name: Run make
         run: make

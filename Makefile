@@ -84,7 +84,7 @@ js: $(OUT_JS_FILES)
 ##########
 
 TERMINAL_MODE_SRCS = $(wildcard $(SRC_CPP)/*.cpp)
-EMCC_FLAGS = -sEXPORTED_RUNTIME_METHODS=ccall
+EMCC_FLAGS = -Wall -Werror -sEXPORTED_RUNTIME_METHODS=ccall
 EMCC_EXPORTS = -sEXPORTED_FUNCTIONS=_main,_key_pressed,_free
 
 $(BUILD_JS)/terminal_mode.js: $(SRC_CPP)/terminal_mode.js $(TERMINAL_MODE_SRCS)

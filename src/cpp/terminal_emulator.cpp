@@ -116,13 +116,17 @@ std::string TerminalEmulator::to_html() {
 }
 
 void TerminalEmulator::add_char(char c) {
+  std::cout << "add_char: " << c << std::endl;
+  std::cout << "terminal at row " << cursor_row << ", col " << cursor_col << std::endl;
   if (c == '\n') {
     cursor_col = 0;
     if (cursor_row == cells.size()) {
       cells.push_back(std::vector<TerminalCell>(width, TerminalCell{}));
       cells.pop_front();
-    } else
+    } else {
       cursor_row += 1;
+    }
+    std::cout << "new terminal at row " << cursor_row << ", col " << cursor_col << std::endl;
   } else if (c == '\t') {
     for (int i = 0; i < 4; ++i)
       add_char(' ');
@@ -136,16 +140,15 @@ void TerminalEmulator::add_char(char c) {
     cells[cursor_row][cursor_col].ansi = ansi_mode;
     cursor_col++;
   }
-  std::cout << "wrote character " << (int)c << " to terminal" << std::endl;
-  std::cout << "cells now has " << cells.size() << " rows" << std::endl;
 }
 
 void TerminalEmulator::add_input(const std::string &input) {
+  std::cout << "add_input: " << input << std::endl;
+  std::cout << "terminal at row " << cursor_row << ", col " << cursor_col << std::endl;
   for (size_t i = 0; i < input.size();) {
     if (input[i] == '\033') {
       // begin ANSI
       ++i;
-      std::cout << "post escape: " << input[i] << std::endl;
       // [
       ++i;
       std::string params;
@@ -341,4 +344,13 @@ void TerminalEmulator::add_input(const std::string &input) {
       add_char(input[i++]);
     }
   }
+}
+
+void TerminalEmulator::move_cursor(int drow, int dcol) {
+  cursor_row += drow;
+  cursor_col += dcol;
+}
+
+void TerminalEmulator::set_cursor_to(char c) {
+  cells[cursor_row][cursor_col] = {ansi_mode, c};
 }

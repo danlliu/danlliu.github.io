@@ -42,11 +42,28 @@ public:
   void add_char(char c);
   void add_input(const std::string &i);
 
+
 private:
+  friend class Wash;
+
   std::deque<std::vector<TerminalCell>> cells;
   size_t height = 0;
   size_t width = 0;
   uint64_t ansi_mode = 0;
   size_t cursor_row = 0;
   size_t cursor_col = 0;
+
+  void move_cursor(int drow, int dcol);
+  void set_cursor_to(char c);
 };
+
+#include <iostream>
+
+template <typename T>
+TerminalEmulator& operator<<(TerminalEmulator& os, T x) {
+  std::cout << "operator<< on terminalemulator" << std::endl;
+  std::ostringstream oss;
+  oss << x;
+  os.add_input(oss.str());
+  return os;
+}

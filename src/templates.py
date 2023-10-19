@@ -7,21 +7,26 @@ SRC = Path('src')
 BUILD = Path('build')
 
 resume_size = (SRC/'assets/resume.pdf').stat().st_size
-suffixes = ['', 'k', 'M', 'G']
-suffix_idx = 0
 
-while resume_size >= 1000:
-  suffix_idx += 1
-  resume_size /= 1000
+def format_size(size):
+  suffixes = ['', 'k', 'M', 'G']
+  suffix_idx = 0
 
-resume_size_str = ''
+  while size >= 1000:
+    suffix_idx += 1
+    size /= 1000
 
-if suffix_idx == 0:
-  resume_size_str = f'{resume_size}'
-elif resume_size >= 1000:
-  resume_size_str = f'{resume_size / 1024:.01f}{suffixes[suffix_idx+1]}'
-else:
-  resume_size_str = f'{resume_size:.00f}{suffixes[suffix_idx]}'
+  size_str = ''
+
+  if suffix_idx == 0:
+    size_str = f'{size}'
+  elif size >= 1000:
+    size_str = f'{size / 1024:.01f}{suffixes[suffix_idx+1]}'
+  else:
+    size_str = f'{size:.00f}{suffixes[suffix_idx]}'
+  return size_str
+
+resume_size_str = format_size(resume_size)
 
 index_env = {
   'banner': {
@@ -56,6 +61,12 @@ index_env = {
         'perm_bits': 'lrwxr--r--',
         'name': 'awards',
         'tag': 'awards'
+      },
+      {
+        'type': 'symlink',
+        'perm_bits': 'lrwxr--r--',
+        'name': 'contact',
+        'tag': 'contact'
       },
       {
         'type': 'file',
@@ -180,9 +191,9 @@ index_env = {
         'end': 'Aug 2023',
         'position': 'Software Engineering Intern: WebKit / JavaScriptCore',
         'bullets': [
-          'ABC',
-          'DEF',
-          'GHI',
+          'Developed a new WebAssembly interpreter for Apple\'s JavaScriptCore framework, improving startup time and memory usage by 7% compared to existing WebAssembly infrastructure',
+          'Shipped over 14,000 lines of C++ and handwritten assembly to implement the core WebAssembly specification, giving the new interpreter similar runtime performance to the existing WebAssembly runtime environment',
+          'Check out my commits at <a class="text-blue underline" href="https://github.com/WebKit/WebKit/pulls?q=is%3Apr+author%3Adanlliu" target="_blank">WebKit\'s GitHub repository</a>!',
         ]
       },
       {
@@ -192,9 +203,8 @@ index_env = {
         'end': 'Jun 2023',
         'position': 'Software Engineering Intern',
         'bullets': [
-          'ABC',
-          'DEF',
-          'GHI',
+          'Performed control flow vulnerability research, binary reverse engineering, and hardware firmware extraction',
+          'Collaborated with a team of interns to discover vulnerabilities in existing commercial products',
         ]
       },
       {
@@ -204,9 +214,9 @@ index_env = {
         'end': 'Jul 2022',
         'position': 'Software Engineering Intern: Lab126',
         'bullets': [
-          'ABC',
-          'DEF',
-          'GHI',
+          'Collaborated with full time SDEs and other interns to integrate a front-end Android app developed in Kotlin with existing APIs and new ML models to provide users with a wide range of responsive and intelligent functionalities',
+          'Developed and updated user-facing content to improve user experience and incorporate new technical features',
+          'Added quality assurance and user engagement code to provide engineers with meaningful data about what features of the app were engaged with the most',
         ]
       },
       {
@@ -215,10 +225,62 @@ index_env = {
         'start': 'Sep 2020',
         'position': 'Instructional Aide',
         'bullets': [
-          'ABC',
-          'DEF',
-          'GHI',
+          'Served on the teaching staff of three main-track (Programming and Introductory Data Structures; Data Structures and Algorithms; Introduction to Computer Organization), and one upper-level (Introduction to Computer Security) computer science courses, teaching roughly 5500 students across nine semesters',
+          'Helped students debug coding projects involving C++, C, Python, x86, and Go; understand lecture material through regularly scheduled office hours and lab sections; and build confidence in their coding abilities',
+          'Developed lab assignments, coding projects, course notes, and exam questions to reinforce and measure student understanding of course material',
+          'Collaborated with course staff and professors to ensure a seamless student experience, leading effort on key tasks such as exam creation, grading, and new project development',
         ]
+      }
+    ]
+  },
+  'research_exp': {
+    'experiences': [
+      {
+        'institution': 'University of Michigan',
+        'advisor': 'Advisor: Dr. Paul Grubbs',
+        'start': 'Sep 2023',
+        'bullets': [
+          'Analyzed the security of cryptographic protocols used in zero-knowledge proofs, examining the security and integrity of zero-knowledge proof-based blockchain systems'
+        ]
+      },
+      {
+        'institution': 'University of Michigan',
+        'advisor': 'Advisors: Dr. Trevor Mudge, Dr. Ronald Dreslinski',
+        'start': 'Jan 2022',
+        'end': 'Jun 2022',
+        'bullets': [
+          'Developed C++ simulators for validating a new hardware accelerator specialized for handling pattern matching in temporal graphs',
+          'Demonstrated a performance increase of up to three orders of magnitude compared to state-of-the-art algorithms run on GPUs',
+          '<a class="text-blue" href="https://tnm.engin.umich.edu/wp-content/uploads/sites/353/2023/03/2022.10.Mint_An_Accelerator_For_Mining_Temporal_Motifs.pdf" target="_blank">Published in MICRO 2022</a>'
+        ]
+      },
+      {
+        'institution': 'University of Michigan',
+        'advisor': 'Advisor: Dr. Manos Kapritsos',
+        'start': 'May 2021',
+        'end': 'Dec 2021',
+        'bullets': [
+          'Improved Dafny, a formal verification language, to implement detection of matching loops, a condition where the proof engine times out on an ever-expanding set of facts',
+          'Worked towards detecting time-consuming matching loops early on through runtime dtection of patterns that may generate matching loops'
+        ]
+      },
+      {
+        'institution': 'University of Michigan',
+        'advisor': 'Advisor: Dr. Melanie Sanford',
+        'start': 'Aug 2019',
+        'bullets': [
+          'Developed a combined compuational and experimental method to expand the substrate scope of transannular C–H activation and functionalization',
+          'Utilized Python and Bash scripting to create high-throughput infrastructure allowing the screening of hundres of structures computationally and confirmed these results through experimental methodology'
+        ]
+      }
+    ]
+  },
+  'awards': {
+    'awards': [
+      {
+        'name': 'Goldwater Scholarship',
+        'timeline': '2022',
+        'description': 'The Goldwater Scholarship is awarded annualy to less than 500 undergraduate students across the nation for students who intend to pursue research careers in STEM disciplines and demonstrate potential as leaders in research.'
       }
     ]
   }
@@ -228,3 +290,5 @@ import json
 index_env['projects']['project_json'] = json.dumps(index_env['projects']['projects'])
 
 render_template("index.html", **index_env) > BUILD / "index.html"
+
+render_template("terminal_mode.html") > BUILD / "terminal_mode.html"

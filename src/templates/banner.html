@@ -40,7 +40,7 @@ daniel@danlliu.github.io
 <pre class="text-xs md:text-sm lg:text-lg select-none" id="banner_tableofcontents">
 daniel@danlliu.github.io $ ls -al
 
-  {% for c in 'drwxr-xr-x' -%}{{lsal_entry(c)}}{% endfor %} <span class="text-gray">   -</span> <span class="text-orange">daniel</span> <a onclick="click_dot()"><span class="text-blue underline">.</span></a>
+  {% for c in 'drwxr-xr-x' -%}{{lsal_entry(c)}}{% endfor %} <span class="text-gray">   -</span> <span class="text-orange">daniel</span> <a onclick="click_dot()"><span class="text-blue underline cursor-help">.</span></a>
 {%- for section in banner.sections -%}
 {%- if section.type == 'file' %}
   {% for c in section.perm_bits -%}{{lsal_entry(c)}}{% endfor %} {{"%4s"|format(section.size)}} <span class="text-orange">daniel</span> <a href="{{section.url}}" target="_blank"><span class="text-green underline">{{section.name}}</span></a>

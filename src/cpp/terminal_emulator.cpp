@@ -120,7 +120,7 @@ void TerminalEmulator::add_char(char c) {
   std::cout << "terminal at row " << cursor_row << ", col " << cursor_col << std::endl;
   if (c == '\n') {
     cursor_col = 0;
-    if (cursor_row == cells.size()) {
+    if (cursor_row == cells.size() - 1) {
       cells.push_back(std::vector<TerminalCell>(width, TerminalCell{}));
       cells.pop_front();
     } else {

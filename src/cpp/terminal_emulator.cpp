@@ -19,7 +19,9 @@ constexpr int FG_PURPLE = 1L << 11;
 constexpr int FG_AQUA = 1L << 12;
 constexpr int FG_WHITE = 1L << 13;
 
-constexpr int CLEAR_FG = ~(FG_BLACK | FG_RED | FG_GREEN | FG_YELLOW | FG_BLUE | FG_PURPLE | FG_AQUA | FG_WHITE);
+constexpr int FG_GRAY = 1L << 22;
+
+constexpr int CLEAR_FG = ~(FG_BLACK | FG_RED | FG_GREEN | FG_YELLOW | FG_BLUE | FG_PURPLE | FG_AQUA | FG_WHITE | FG_GRAY);
 
 constexpr int BG_BLACK = 1L << 14;
 constexpr int BG_RED = 1L << 15;
@@ -31,6 +33,8 @@ constexpr int BG_AQUA = 1L << 20;
 constexpr int BG_WHITE = 1L << 21;
 
 constexpr int CLEAR_BG = ~(BG_BLACK | BG_RED | BG_GREEN | BG_YELLOW | BG_BLUE | BG_PURPLE | BG_AQUA | BG_WHITE);
+
+constexpr int CURSOR = 1L << 30;
 
 std::ostream &operator<<(std::ostream &os, const TerminalCell &cell) {
   os << "<span class=\"";
@@ -62,6 +66,8 @@ std::ostream &operator<<(std::ostream &os, const TerminalCell &cell) {
     os << "text-aqua ";
   if (cell.ansi & FG_WHITE)
     os << "text-white ";
+  if (cell.ansi & FG_GRAY)
+    os << "text-gray ";
   if (cell.ansi & BG_BLACK)
     os << "bg-black ";
   if (cell.ansi & BG_RED)
@@ -78,8 +84,7 @@ std::ostream &operator<<(std::ostream &os, const TerminalCell &cell) {
     os << "bg-aqua ";
   if (cell.ansi & BG_WHITE)
     os << "bg-white ";
-  // CURSOR
-  if (cell.ansi & (1L << 22))
+  if (cell.ansi & CURSOR)
     os << "bg-gray/50 ";
   os << "\">";
   if (cell.character == '>')
@@ -105,7 +110,7 @@ std::string TerminalEmulator::to_html() {
     size_t col = 0;
     for (auto c : r) {
       if (row == cursor_row && col == cursor_col)
-        c.ansi |= (1L << 22);
+        c.ansi |= CURSOR;
       oss << c;
       ++col;
     }
@@ -116,8 +121,6 @@ std::string TerminalEmulator::to_html() {
 }
 
 void TerminalEmulator::add_char(char c) {
-  std::cout << "add_char: " << c << std::endl;
-  std::cout << "terminal at row " << cursor_row << ", col " << cursor_col << std::endl;
   if (c == '\n') {
     cursor_col = 0;
     if (cursor_row == cells.size() - 1) {
@@ -126,25 +129,30 @@ void TerminalEmulator::add_char(char c) {
     } else {
       cursor_row += 1;
     }
-    std::cout << "new terminal at row " << cursor_row << ", col " << cursor_col << std::endl;
   } else if (c == '\t') {
     for (int i = 0; i < 4; ++i)
       add_char(' ');
   } else if (c == '\b') {
     if (cursor_col)
       cursor_col -= 1;
+    else {
+      if (cursor_row) {
+        cursor_col = width - 1;
+        cursor_row -= 1;
+      }
+    }
     cells[cursor_row][cursor_col].character = ' ';
     cells[cursor_row][cursor_col].ansi = 0;
   } else {
     cells[cursor_row][cursor_col].character = c;
     cells[cursor_row][cursor_col].ansi = ansi_mode;
     cursor_col++;
+    if (cursor_col >= width)
+      add_char('\n');
   }
 }
 
 void TerminalEmulator::add_input(const std::string &input) {
-  std::cout << "add_input: " << input << std::endl;
-  std::cout << "terminal at row " << cursor_row << ", col " << cursor_col << std::endl;
   for (size_t i = 0; i < input.size();) {
     if (input[i] == '\033') {
       // begin ANSI
@@ -233,6 +241,7 @@ void TerminalEmulator::add_input(const std::string &input) {
         // - 36 / 46: aqua
         // - 37 / 47: white
         // - 39 / 49: default fg/bg
+        // - 90 : gray text
 
         int n = std::stoi(params);
         switch (n) {
@@ -334,6 +343,10 @@ void TerminalEmulator::add_input(const std::string &input) {
         case 47:
           ansi_mode &= CLEAR_BG;
           ansi_mode |= BG_WHITE;
+          break;
+        case 90:
+          ansi_mode &= CLEAR_FG;
+          ansi_mode |= FG_GRAY;
           break;
         }
       } break;

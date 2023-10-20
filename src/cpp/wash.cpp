@@ -21,7 +21,6 @@ void Wash::input_key(char key, bool ctrl, bool alt, bool shift, bool meta) {
     // call command
 
     execute_command(entered_chars, key, emulator);
-    std::cout << "new emulator loc = " << emulator.cursor_row << " " << emulator.cursor_col << std::endl;
     update_terminal(emulator);
 
     print_prompt();
@@ -32,6 +31,17 @@ void Wash::input_key(char key, bool ctrl, bool alt, bool shift, bool meta) {
   }
 
   update_terminal(emulator);
+}
+
+std::set<char> parse_options(int argc, char* const argv[], const char* short_opts, struct option long_opts[]) {
+  std::set<char> result;
+  while (1) {
+    int option_index = 0;
+    int c = getopt_long(argc, argv, short_opts, long_opts, &option_index); 
+    if (c == -1) break;
+    result.insert(static_cast<char>(c));
+  }
+  return result;
 }
 
 std::string parse_escaped_string(const std::string &escaped) {

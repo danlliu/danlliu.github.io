@@ -31,7 +31,21 @@ void setup_fs() {
   // /home
   {
     auto home = std::make_unique<FSINode>(INodeType::INODE_DIR, root, std::string{""}, 0755);
-    // /bin/education
+    // /home/education
+    {
+      auto home_education = std::make_unique<FSINode>(INodeType::INODE_DIR, root, std::string{""}, 0755);
+      home->children.emplace(std::make_pair("education", std::move(home_education)));
+    }
+    // /home/projects
+    {
+      auto home_education = std::make_unique<FSINode>(INodeType::INODE_DIR, root, std::string{""}, 0755);
+      home->children.emplace(std::make_pair("education", std::move(home_education)));
+    }
+    // /home/
+    {
+      auto home_education = std::make_unique<FSINode>(INodeType::INODE_DIR, root, std::string{""}, 0755);
+      home->children.emplace(std::make_pair("education", std::move(home_education)));
+    }
     {
       auto home_education = std::make_unique<FSINode>(INodeType::INODE_DIR, root, std::string{""}, 0755);
       home->children.emplace(std::make_pair("education", std::move(home_education)));

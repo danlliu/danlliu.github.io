@@ -74,10 +74,22 @@ private:
       return true;
     }
     if (argv[0] == "pwd") {
+      if (cwd.size() == 0) {
+        output << "/\n";
+        return true;
+      }
       for (auto component : cwd) {
         output << "/" << component;
       }
       output << "\n";
+      return true;
+    }
+    if (argv[0] == "cd") {
+      if (argv.size() == 1) {
+        output << "cd <directory>\n";
+        return true;
+      }
+      cwd = compute_path(cwd, argv[1]);
       return true;
     }
     if (argv[0] == "ls") {
@@ -87,7 +99,7 @@ private:
       ls_args.num_positionals(1);
       auto result = ls_args.parse(argv.size(), argv_cstr.get());
 
-      // bool all = result.has('a');
+      bool all = result.has('a');
       bool long_mode = result.has('l');
 
       auto path = cwd;
@@ -99,7 +111,8 @@ private:
 
       auto inode = fs.get_inode(path);
       if (long_mode) {
-        for (auto &[child, child_inode] : inode->children) {
+        for (auto &[child, child_inode] : inode->get_children()) {
+          if (child[0] == '.' && !all) continue;
           if (child_inode->type == INodeType::INODE_DIR) {
             output << "\033[34md\033[0m";
           } else {
@@ -147,7 +160,8 @@ private:
           output << "\n";
         }
       } else {
-        for (auto &[child, child_inode] : inode->children) {
+        for (auto &[child, child_inode] : inode->get_children()) {
+          if (child[0] == '.' && !all) continue;
           if (child_inode->type == INodeType::INODE_DIR) {
             output << "\033[34m" << child << "\033[0m  ";
           } else if (child_inode->perms & 0111) {

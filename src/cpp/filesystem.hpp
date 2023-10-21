@@ -31,6 +31,16 @@ struct FSINode {
 
   FSINode(INodeType type, FSINode *parent, std::string content, int perms, size_t override_size)
       : type(type), parent(parent), children{}, content(content), perms(perms), override_size(override_size) {}
+    
+  std::vector<std::pair<std::string, FSINode*>> get_children() {
+    std::vector<std::pair<std::string, FSINode*>> result;
+    result.emplace_back(std::make_pair(".", this));
+    result.emplace_back(std::make_pair("..", parent));
+    for (auto &[k, v] : children) {
+      result.emplace_back(std::make_pair(k, v.get()));
+    }
+    return result;
+  }
 
   std::string file_size() {
     size_t size = override_size ? *override_size : content.size();

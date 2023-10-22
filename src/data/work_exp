@@ -1,0 +1,50 @@
+LIST(
+WORK_EXP(
+  COMPANY("Apple"),
+  LOCATION("Cupertino, CA"),
+  START("Jun 2023"),
+  END("Aug 2023"),
+  POSITION("Software Engineering Intern: WebKit / JavaScriptCore"),
+  BULLETS(
+    "Developed a new WebAssembly interpreter for Apple's JavaScriptCore framework, improving startup time and memory usage by 7% compared to existing WebAssembly infrastructure",
+    "Shipped over 14,000 lines of C++ and handwritten assembly to implement the core WebAssembly specification, giving the new interpreter similar runtime performance to the existing WebAssembly runtime environment",
+    "Check out my commits at <a class=\"text-blue underline\" href=\"https://github.com/WebKit/WebKit/pulls?q=is%3Apr+author%3Adanlliu\" target=\"_blank\">WebKit's GitHub repository</a>!",
+  )
+),
+WORK_EXP(
+  COMPANY("Caesar Creek Software"),
+  LOCATION("Miamisburg, OH"),
+  START("May 2023"),
+  END("Jun 2023"),
+  POSITION("Software Engineering Intern"),
+  BULLETS(
+    "Performed control flow vulnerability research, binary reverse engineering, and hardware firmware extraction",
+    "Collaborated with a team of interns to discover vulnerabilities in existing commercial products",
+  )
+),
+WORK_EXP(
+  COMPANY("Amazon"),
+  LOCATION("Sunnyvale, CA"),
+  START("May 2022"),
+  END("Jul 2022"),
+  POSITION("Software Engineering Intern: Lab126"),
+  BULLETS(
+    "Collaborated with full time SDEs and other interns to integrate a front-end Android app developed in Kotlin with existing APIs and new ML models to provide users with a wide range of responsive and intelligent functionalities",
+    "Developed and updated user-facing content to improve user experience and incorporate new technical features",
+    "Added quality assurance and user engagement code to provide engineers with meaningful data about what features of the app were engaged with the most",
+  )
+),
+WORK_EXP(
+  COMPANY("University of Michigan"),
+  LOCATION("Ann Arbor, MI"),
+  START("Sep 2020"),
+  NOEND(),
+  POSITION("Instructional Aide"),
+  BULLETS(
+    "Served on the teaching staff of three main-track (Programming and Introductory Data Structures; Data Structures and Algorithms; Introduction to Computer Organization), and one upper-level (Introduction to Computer Security) computer science courses, teaching roughly 5500 students across nine semesters",
+    "Helped students debug coding projects involving C++, C, Python, x86, and Go; understand lecture material through regularly scheduled office hours and lab sections; and build confidence in their coding abilities",
+    "Developed lab assignments, coding projects, course notes, and exam questions to reinforce and measure student understanding of course material",
+    "Collaborated with course staff and professors to ensure a seamless student experience, leading effort on key tasks such as exam creation, grading, and new project development",
+  )
+)
+)

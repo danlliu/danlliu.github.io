@@ -1,0 +1,7 @@
+LIST(
+AWARD(
+  NAME("Goldwater Scholarship"),
+  TIMELINE("2022"),
+  DESCRIPTION("The Goldwater Scholarship is awarded annualy to less than 500 undergraduate students across the nation for students who intend to pursue research careers in STEM disciplines and demonstrate potential as leaders in research.")
+)
+)

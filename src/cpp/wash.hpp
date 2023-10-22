@@ -89,7 +89,27 @@ private:
         output << "cd <directory>\n";
         return true;
       }
-      cwd = compute_path(cwd, argv[1]);
+      auto new_path = compute_path(cwd, argv[1]);
+      auto inode = fs.get_inode(new_path);
+      if (inode->type == INodeType::INODE_DIR) {
+        cwd = new_path;
+      } else {
+        output << "cd <directory>\n";
+      }
+      return true;
+    }
+    if (argv[0] == "cat") {
+      if (argv.size() == 1) {
+        output << "cat <file>\n";
+        return true;
+      }
+      auto new_path = compute_path(cwd, argv[1]);
+      auto inode = fs.get_inode(new_path);
+      if (inode->type == INodeType::INODE_FILE) {
+        output << inode->content << "\n";
+      } else {
+        output << "cat <file>\n";
+      }
       return true;
     }
     if (argv[0] == "ls") {

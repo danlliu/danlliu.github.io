@@ -1,6 +1,7 @@
 
 SRC = src
 SRC_ASSETS = $(SRC)/assets
+SRC_DATA = $(SRC)/data
 SRC_TEMPLATES = $(SRC)/templates
 SRC_CSS = $(SRC)/css
 SRC_JS = $(SRC)/js
@@ -84,7 +85,7 @@ js: $(OUT_JS_FILES)
 ##########
 
 TERMINAL_MODE_SRCS = $(wildcard $(SRC_CPP)/*.cpp)
-EMCC_FLAGS = -Wall -Werror -sEXPORTED_RUNTIME_METHODS=ccall
+EMCC_FLAGS = -Wall -Werror -sEXPORTED_RUNTIME_METHODS=ccall -I $(SRC_DATA)
 EMCC_EXPORTS = -sEXPORTED_FUNCTIONS=_main,_key_pressed,_free
 
 $(BUILD_JS)/terminal_mode.js: $(SRC_CPP)/terminal_mode.js $(TERMINAL_MODE_SRCS)

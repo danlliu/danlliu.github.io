@@ -1,0 +1,50 @@
+LIST(
+COURSE(
+  TITLE("Introduction to Operating Systems"),
+  CONCEPTS(
+    "threads and synchronization",
+    "virtual memory management",
+    "socket programming"
+  )
+),
+COURSE(
+  TITLE("Compiler Construction"),
+  CONCEPTS(
+    "x64 assembly",
+    "abstract syntax tree manipulation",
+    "register allocation"
+  )
+),
+COURSE(
+  TITLE("Introduction to Computer Security"),
+  CONCEPTS(
+    "cryptography",
+    "web security: SQLi, XSS, CSRF",
+    "application security: buffer overflows"
+  )
+),
+COURSE(
+  TITLE("Web Systems"),
+  CONCEPTS(
+    "dynamic web applications",
+    "JavaScript programming",
+    "search engine algorithms"
+  )
+),
+COURSE(
+  TITLE("User Interface Development"),
+  CONCEPTS(
+    "responsive web design",
+    "human-centered design",
+    "Bootstrap CSS framework"
+  )
+),
+COURSE(
+  TITLE("Introduction to Computer Organization"),
+  CONCEPTS(
+    "ARM assembly",
+    "processor design",
+    "low-level code optimization"
+  )
+)
+)

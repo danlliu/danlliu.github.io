@@ -1,6 +1,7 @@
 
 #include <iostream>
 
+#include "data.hpp"
 #include "filesystem.hpp"
 #include "terminal_emulator.hpp"
 #include "terminal_mode_interface.hpp"
@@ -33,13 +34,51 @@ void setup_fs() {
     auto home = std::make_unique<FSINode>(INodeType::INODE_DIR, root, std::string{""}, 0755);
     // /home/education
     {
-      auto home_education = std::make_unique<FSINode>(INodeType::INODE_DIR, root, std::string{""}, 0755);
+      auto home_education = std::make_unique<FSINode>(INodeType::INODE_DIR, home.get(), std::string{""}, 0755);
+      {
+        std::ostringstream oss;
+        oss << "# University of Michigan: Ann Arbor\n\n";
+        oss << "## College of Literature, Science, and the Arts\n";
+        oss << "B.S.Chem in Computer Science and Chemistry **anticipated May 2024**\n\n";
+        oss << "## Ross School of Business\n";
+        oss << "Bachelors of Business Administration **anticipated May 2024**\n\n";
+        auto home_education_umich = std::make_unique<FSINode>(INodeType::INODE_FILE, home_education.get(), oss.str(), 0644);
+        home_education->children.emplace(std::make_pair("umich", std::move(home_education_umich)));
+      }
+      {
+        std::ostringstream oss;
+        oss << "# Relevant Coursework\n\n";
+        for (auto course : get_relevant_courses()) {
+          oss << "## " << course.title << "\n";
+          for (auto concept : course.concepts) {
+            oss << "- " << concept << "\n";
+          }
+          oss << "\n";
+        }
+        auto home_education_rel_course = std::make_unique<FSINode>(INodeType::INODE_FILE, home_education.get(), oss.str(), 0644);
+        home_education->children.emplace(std::make_pair("relevant_coursework.txt", std::move(home_education_rel_course)));
+      }
       home->children.emplace(std::make_pair("education", std::move(home_education)));
     }
     // /home/projects
     {
-      auto home_education = std::make_unique<FSINode>(INodeType::INODE_DIR, root, std::string{""}, 0755);
-      home->children.emplace(std::make_pair("education", std::move(home_education)));
+      auto home_projects = std::make_unique<FSINode>(INodeType::INODE_DIR, home.get(), std::string{""}, 0755);
+      for (auto project : get_personal_projects()) {
+        std::ostringstream oss;
+        oss << "# " << project.name << "\n\n";
+
+        for (auto tag : project.tags) {
+          oss << "[" << tag << "] ";
+        }
+        oss << "\n\n";
+        
+        oss << "[GitHub repository](" << project.github << ")\n\n";
+
+        oss << project.description << "\n";
+        auto proj_node = std::make_unique<FSINode>(INodeType::INODE_FILE, home_projects.get(), oss.str(), 0644);
+        home_projects->children.emplace(std::make_pair(project.id, std::move(proj_node)));
+      }
+      home->children.emplace(std::make_pair("projects", std::move(home_projects)));
     }
     // /home/
     {

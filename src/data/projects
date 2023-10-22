@@ -1,0 +1,51 @@
+LIST(
+PROJECT(
+  NAME("danlliu.github.io"),
+  ID("personalweb"),
+  TAGS("web", "html", "css", "js", "tailwind"),
+  GITHUB("https://github.com/danlliu/danlliu.github.io"),
+  DESCRIPTION("The third iteration of my personal website! I've updated my website design, inspired by the neofetch command, and added a few new easter eggs! This project uses a wide variety of languages and frameworks: HTML, Tailwind CSS, and JS for the front end; Python and Jinja for rendering templates; Makefiles for setting up the build system; GitHub Actions for CI/CD onto the public-facing domain; and C++ and WebAssembly for the easter eggs!")
+),
+PROJECT(
+  NAME("dvim"),
+  ID("dvim"),
+  TAGS("c++", "cpp"),
+  GITHUB("https://github.com/danlliu/dvim"),
+  DESCRIPTION("A homegrown terminal text editor, inspired by vim and neovim. Written in C++, utilizing the ncurses library to display the TUI.")
+),
+PROJECT(
+  NAME("cppserver"),
+  ID("cppserver"),
+  TAGS("c++", "cpp", "web", "socket"),
+  GITHUB("https://github.com/danlliu/cppserver"),
+  DESCRIPTION("A webserver written in C++! After a few years of using Flask, I wondered how hard it would be to write up a similar program in C++. What started as satisfying my curiosity ended up being a full-fledged web server, complete with a simple templating engine!")
+),
+PROJECT(
+  NAME("armstdlib"),
+  ID("armstdlib"),
+  TAGS("armv8", "asm"),
+  GITHUB("https://github.com/danlliu/armstdlib"),
+  DESCRIPTION("A collection of data structures and algorithms written in ARMv8 assembly! Inspired heavily by the C and C++ standard libraries.")
+),
+PROJECT(
+  NAME("flasm"),
+  ID("flasm"),
+  TAGS("x86", "x64", "asm"),
+  GITHUB("https://github.com/danlliu/flasm"),
+  DESCRIPTION("A collection of data structures and algorithms written in x86_64 assembly! Inspired heavily by the C and C++ standard libraries.")
+),
+PROJECT(
+  NAME("pdp"),
+  ID("pdp"),
+  TAGS("asm", "c++", "cpp"),
+  GITHUB("https://github.com/danlliu/pdp"),
+  DESCRIPTION( "An assembler and simulator for the PDP-1 computer\"s assembly language")
+),
+PROJECT(
+  NAME("beepboop"),
+  ID("beepboop"),
+  TAGS("js", "programming language", "esolang"),
+  GITHUB("https://github.com/danlliu/beepboop"),
+  DESCRIPTION( "An esoteric programming language where you only have \"beep\" and \"boop\"")
+)
+)

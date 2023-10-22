@@ -1,0 +1,42 @@
+LIST(
+RESEARCH_EXP(
+  INSTITUTION("University of Michigan"),
+  ADVISOR("Advisor: Dr. Paul Grubbs"),
+  START("Sep 2023"),
+  NOEND(),
+  BULLETS(
+    "Analyzed the security of cryptographic protocols used in zero-knowledge proofs, examining the security and integrity of zero-knowledge proof-based blockchain systems"
+  )
+),
+RESEARCH_EXP(
+  INSTITUTION("University of Michigan"),
+  ADVISOR("Advisors: Dr. Trevor Mudge, Dr. Ronald Dreslinski"),
+  START("Jan 2022"),
+  END("Jun 2022"),
+  BULLETS(
+    "Developed C++ simulators for validating a new hardware accelerator specialized for handling pattern matching in temporal graphs",
+    "Demonstrated a performance increase of up to three orders of magnitude compared to state-of-the-art algorithms run on GPUs",
+    "<a class=\"text-blue\" href=\"https://tnm.engin.umich.edu/wp-content/uploads/sites/353/2023/03/2022.10.Mint_An_Accelerator_For_Mining_Temporal_Motifs.pdf\" target=\"_blank\">Published in MICRO 2022</a>"
+  )
+),
+RESEARCH_EXP(
+  INSTITUTION("University of Michigan"),
+  ADVISOR("Advisor: Dr. Manos Kapritsos"),
+  START("May 2021"),
+  END("Dec 2021"),
+  BULLETS(
+    "Improved Dafny, a formal verification language, to implement detection of matching loops, a condition where the proof engine times out on an ever-expanding set of facts",
+    "Worked towards detecting time-consuming matching loops early on through runtime dtection of patterns that may generate matching loops"
+  )
+),
+RESEARCH_EXP(
+  INSTITUTION("University of Michigan"),
+  ADVISOR("Advisor: Dr. Melanie Sanford"),
+  START("Aug 2019"),
+  NOEND(),
+  BULLETS(
+    "Developed a combined compuational and experimental method to expand the substrate scope of transannular C–H activation and functionalization",
+    "Utilized Python and Bash scripting to create high-throughput infrastructure allowing the screening of hundres of structures computationally and confirmed these results through experimental methodology"
+  )
+)
+)

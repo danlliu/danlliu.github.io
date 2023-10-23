@@ -63,14 +63,13 @@ private:
       // empty command does nothing!
       return true;
     }
-    if (argv[0] == "echo") {
-      for (size_t i = 1; i < argv.size(); ++i) {
-        if (i != 1) {
-          output << " ";
-        }
-        output << argv[i];
-      }
-      output << "\n";
+
+    // 0 argument commands
+    // - clear
+    // - pwd
+
+    if (argv[0] == "clear") {
+      output << "\033[2J";
       return true;
     }
     if (argv[0] == "pwd") {
@@ -84,20 +83,26 @@ private:
       output << "\n";
       return true;
     }
-    if (argv[0] == "cd") {
-      if (argv.size() == 1) {
-        output << "cd <directory>\n";
-        return true;
+
+    // non-path argument commands
+    // - echo args... 
+
+    if (argv[0] == "echo") {
+      for (size_t i = 1; i < argv.size(); ++i) {
+        if (i != 1) {
+          output << " ";
+        }
+        output << argv[i];
       }
-      auto new_path = compute_path(cwd, argv[1]);
-      auto inode = fs.get_inode(new_path);
-      if (inode->type == INodeType::INODE_DIR) {
-        cwd = new_path;
-      } else {
-        output << "cd <directory>\n";
-      }
+      output << "\n";
       return true;
     }
+
+    // 1 path argument commands
+    // - cat
+    // - cd
+    // - ls
+
     if (argv[0] == "cat") {
       if (argv.size() == 1) {
         output << "cat <file>\n";
@@ -109,6 +114,20 @@ private:
         output << inode->content << "\n";
       } else {
         output << "cat <file>\n";
+      }
+      return true;
+    }
+    if (argv[0] == "cd") {
+      if (argv.size() == 1) {
+        output << "cd <directory>\n";
+        return true;
+      }
+      auto new_path = compute_path(cwd, argv[1]);
+      auto inode = fs.get_inode(new_path);
+      if (inode->type == INodeType::INODE_DIR) {
+        cwd = new_path;
+      } else {
+        output << "cd <directory>\n";
       }
       return true;
     }
@@ -194,6 +213,7 @@ private:
       }
       return true;
     }
+
     return false;
   }
 

@@ -29,13 +29,15 @@
 
 struct TerminalCell {
   uint64_t ansi = 0;
+  uint8_t fg256 = 0;
+  uint8_t bg256 = 0;
   char character = ' ';
 };
 std::ostream& operator<<(std::ostream& os, const TerminalCell &cell);
 
 class TerminalEmulator {
 public:
-  TerminalEmulator(size_t height = 24, size_t width = 80)
+  TerminalEmulator(size_t height = 32, size_t width = 120)
       : cells(height, std::vector<TerminalCell>(width, TerminalCell{})), height(height), width(width), ansi_mode(0), cursor_row(0), cursor_col(0) {}
 
   std::string to_html();
@@ -50,6 +52,8 @@ private:
   size_t height = 0;
   size_t width = 0;
   uint64_t ansi_mode = 0;
+  uint8_t ansi_fg_256 = 0;
+  uint8_t ansi_bg_256 = 0;
   size_t cursor_row = 0;
   size_t cursor_col = 0;
 

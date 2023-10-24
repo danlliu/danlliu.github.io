@@ -30,6 +30,7 @@ struct WorkExp {
 std::vector<WorkExp> get_work_experience();
 
 struct ResearchExp {
+  std::string tag;
   std::string institution;
   std::string advisor;
   std::string start;

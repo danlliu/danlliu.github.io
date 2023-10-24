@@ -128,6 +128,9 @@ std::string parse_escaped_string(const std::string &escaped) {
         case 't':
           result += '\t';
           break;
+        case 'e':
+          result += '\e';
+          break;
         case '\\':
           result += '\\';
           break;

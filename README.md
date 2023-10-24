@@ -66,6 +66,18 @@ For terminal mode, we need a terminal! The terminal emulator code is in
 [`terminal_emulator.cpp`](src/cpp/terminal_emulator.cpp). This implements an
 ANSI escape code-compatible terminal, including 256 color support!
 
+The current list of commands supported are:
+
+```
+clear
+pwd
+echo <args...>
+sleep <time>
+cat [file]
+cd <path>
+ls [path]
+```
+
 ### Makefile
 
 The [`Makefile`](./Makefile) chains together all of the necessary build steps.

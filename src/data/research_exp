@@ -1,5 +1,6 @@
 LIST(
 RESEARCH_EXP(
+  TAG("grubbs"),
   INSTITUTION("University of Michigan"),
   ADVISOR("Advisor: Dr. Paul Grubbs"),
   START("Sep 2023"),
@@ -9,6 +10,7 @@ RESEARCH_EXP(
   )
 ),
 RESEARCH_EXP(
+  TAG("mudge-dreslinski"),
   INSTITUTION("University of Michigan"),
   ADVISOR("Advisors: Dr. Trevor Mudge, Dr. Ronald Dreslinski"),
   START("Jan 2022"),
@@ -20,6 +22,7 @@ RESEARCH_EXP(
   )
 ),
 RESEARCH_EXP(
+  TAG("kapritsos"),
   INSTITUTION("University of Michigan"),
   ADVISOR("Advisor: Dr. Manos Kapritsos"),
   START("May 2021"),
@@ -30,6 +33,7 @@ RESEARCH_EXP(
   )
 ),
 RESEARCH_EXP(
+  TAG("sanford"),
   INSTITUTION("University of Michigan"),
   ADVISOR("Advisor: Dr. Melanie Sanford"),
   START("Aug 2019"),

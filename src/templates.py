@@ -96,6 +96,8 @@ def get_work_exp():
   return eval(open(SRC/'data/work_exp').read())
 
 def get_research_exp():
+  def TAG(_id):
+    return _id 
   def INSTITUTION(x):
     return x
   def ADVISOR(x):
@@ -108,7 +110,7 @@ def get_research_exp():
     return None
   def BULLETS(*a):
     return [*a]
-  def RESEARCH_EXP(institution, advisor, start, end, bullets):
+  def RESEARCH_EXP(tag, institution, advisor, start, end, bullets):
     return {
       'institution': institution,
       'advisor': advisor,

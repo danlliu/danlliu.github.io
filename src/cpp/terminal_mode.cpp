@@ -107,6 +107,17 @@ void setup_fs() {
     // /home/research_exp
     {
       auto research_experience = std::make_unique<FSINode>(INodeType::INODE_DIR, home.get(), std::string{""}, 0755);
+      for (auto exp : get_research_experience()) {
+        std::ostringstream oss;
+        oss << "# " << exp.institution << "\n";
+        oss << exp.advisor << "\n";
+        oss << exp.start << " - " << exp.end << "\n\n";
+        for (auto bullet : exp.bullets) {
+          oss << "- " << bullet << "\n";
+        }
+        auto exp_node = std::make_unique<FSINode>(INodeType::INODE_FILE, research_experience.get(), oss.str(), 0644);
+        research_experience->children.emplace(std::make_pair(exp.tag, std::move(exp_node)));
+      }
       home->children.emplace(std::make_pair("research_exp", std::move(research_experience)));
     }
     root->children.emplace(std::make_pair("home", std::move(home)));

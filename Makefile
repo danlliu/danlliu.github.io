@@ -77,15 +77,18 @@ css: $(OUT_CSS_FILES)
 $(BUILD_JS)/%.js: $(SRC_JS)/%.js build
 	cp $< $@
 
+$(BUILD_DIR)/coi-serviceworker.min.js: $(SRC_JS)/coi-serviceworker.min.js
+	cp $< $@
+
 .PHONY: js
-js: $(OUT_JS_FILES)
+js: $(OUT_JS_FILES) $(BUILD_DIR)/coi-serviceworker.min.js
 
 ##########
 ## WASM ##
 ##########
 
 TERMINAL_MODE_SRCS = $(wildcard $(SRC_CPP)/*.cpp)
-EMCC_FLAGS = -Wall -Werror -sEXPORTED_RUNTIME_METHODS=ccall -I $(SRC_DATA)
+EMCC_FLAGS = -Wall -Werror -sEXPORTED_RUNTIME_METHODS=ccall -pthread -sPTHREAD_POOL_SIZE=4 -DALLOW_BLOCKING_ON_MAIN_THREAD=0 -I $(SRC_DATA)
 EMCC_EXPORTS = -sEXPORTED_FUNCTIONS=_main,_key_pressed,_free
 
 $(BUILD_JS)/terminal_mode.js: $(SRC_CPP)/terminal_mode.js $(TERMINAL_MODE_SRCS)

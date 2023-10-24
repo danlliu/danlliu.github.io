@@ -1,11 +1,22 @@
 
-#include <iostream>
+#include <emscripten/proxying.h>
+#include <sstream>
+#include <string>
+#include <pthread.h>
 
 #include "data.hpp"
 #include "filesystem.hpp"
 #include "terminal_emulator.hpp"
 #include "terminal_mode_interface.hpp"
 #include "wash.hpp"
+
+#ifndef __EMSCRIPTEN_PTHREADS__
+static_assert(false, "thread support required");
+#endif
+
+pthread_t main_thread;
+std::mutex proxy_queue_mutex;
+em_proxying_queue* proxy_queue = nullptr;
 
 TerminalEmulator emulator;
 Filesystem filesystem;
@@ -95,6 +106,9 @@ void setup_fs() {
 
 int main() {
   setup_fs();
+
+  main_thread = pthread_self();
+  proxy_queue = em_proxying_queue_create();
 
   update_terminal(emulator);
 }

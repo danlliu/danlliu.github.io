@@ -10,14 +10,22 @@ __      ____ _ ___| |__
 the WebAssembly SHell
 */
 
+#include <condition_variable>
+#include <deque>
 #include <getopt.h>
 #include <iostream>
+#include <mutex>
+#include <optional>
 #include <set>
 #include <sstream>
+#include <thread>
+
+using namespace std::literals::chrono_literals;
 
 #include "args.hpp"
 #include "filesystem.hpp"
 #include "terminal_emulator.hpp"
+#include "terminal_mode_interface.hpp"
 
 std::string parse_escaped_string(const std::string &escaped);
 
@@ -45,10 +53,41 @@ private:
   FSINode *cwd_ptr;
   std::string entered_chars = "";
 
+  std::mutex buffer_mutex;
+  std::condition_variable buffer_cv;
+  bool is_executing = false;
+  std::deque<char> buffer;
+
+  char wait_for_char() {
+    std::unique_lock<std::mutex> hold(buffer_mutex);
+    buffer_cv.wait(hold, [&](){return buffer.size() > 0;});
+    std::cout << "finished waiting!" << std::endl;
+    char c = buffer.front();
+    buffer.pop_front();
+    return c;
+  }
+
+  std::optional<std::string> wait_for_line() {
+    std::string result;
+    while (char c = wait_for_char()) {
+      // newline, ^C, or ^D
+      if (c == '\n') {
+        break;
+      }
+      if (c == 3 || c == 4) return {};
+      if (c == '\b') {
+        result.pop_back();
+      } else {
+        result.push_back(c);
+      }
+    }
+    return result;
+  }
+
   void print_prompt();
 
-  template <typename instream, typename outstream>
-  bool try_builtin(const std::vector<std::string> &argv, instream &input, outstream &output) {
+  template <typename outstream>
+  bool try_builtin(const std::vector<std::string> &argv, outstream &output) {
     std::cout << "args:" << std::endl;
 
     auto argv_cstr = std::make_unique<const char *[]>(argv.size());
@@ -86,6 +125,7 @@ private:
 
     // non-path argument commands
     // - echo args... 
+    // - sleep time
 
     if (argv[0] == "echo") {
       for (size_t i = 1; i < argv.size(); ++i) {
@@ -97,6 +137,11 @@ private:
       output << "\n";
       return true;
     }
+    if (argv[0] == "sleep") {
+      int seconds = std::stoi(argv[1]);
+      std::this_thread::sleep_for(seconds * 1s);
+      return true;
+    }
 
     // 1 path argument commands
     // - cat
@@ -105,7 +150,14 @@ private:
 
     if (argv[0] == "cat") {
       if (argv.size() == 1) {
-        output << "cat <file>\n";
+        // echo back input as we get it
+        while (true) {
+          auto c = wait_for_line();
+          if (!c) break;
+          output << *c << "\n";
+          update_by_proxy(output);
+        }
+        output << "\n";
         return true;
       }
       auto new_path = compute_path(cwd, argv[1]);
@@ -217,8 +269,8 @@ private:
     return false;
   }
 
-  template <typename instream, typename outstream>
-  void execute_command(const std::string &command, instream &input, outstream &output) {
+  template <typename outstream>
+  void execute_command(const std::string &command, outstream &output) {
     std::vector<std::string> args;
     {
       std::string arg;
@@ -253,7 +305,7 @@ private:
         }
       }
     }
-    if (try_builtin(args, input, output)) {
+    if (try_builtin(args, output)) {
     } else {
       output << "wash: unrecognized command " << args[0] << "\n";
     }

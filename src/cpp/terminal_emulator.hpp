@@ -2,7 +2,9 @@
 #pragma once
 
 #include <deque>
+#include <mutex>
 #include <sstream>
+#include <thread>
 #include <vector>
 
 // ANSI Escape Codes:
@@ -44,10 +46,12 @@ public:
   void add_char(char c);
   void add_input(const std::string &i);
 
-
 private:
   friend class Wash;
+  template <typename T>
+  friend TerminalEmulator& operator<<(TerminalEmulator& os, T x);
 
+  std::mutex lock;
   std::deque<std::vector<TerminalCell>> cells;
   size_t height = 0;
   size_t width = 0;
@@ -66,6 +70,7 @@ private:
 template <typename T>
 TerminalEmulator& operator<<(TerminalEmulator& os, T x) {
   std::cout << "operator<< on terminalemulator" << std::endl;
+  // std::unique_lock<std::mutex> hold(os.lock);
   std::ostringstream oss;
   oss << x;
   os.add_input(oss.str());

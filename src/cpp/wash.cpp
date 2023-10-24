@@ -10,35 +10,100 @@ void Wash::print_prompt() {
 }
 
 void Wash::input_key(char key, bool ctrl, bool alt, bool shift, bool meta) {
-  if (key == '\b') {
-    if (entered_chars.size() != 0) {
-      entered_chars.pop_back();
-      emulator.add_char('\b');
-    }
-  } else if (key == '\n') {
-    std::cout << "entered command: " << entered_chars << std::endl;
-    emulator.add_char('\n');
-    // call command
-
-    execute_command(entered_chars, key, emulator);
-    update_terminal(emulator);
-
-    print_prompt();
-    entered_chars = "";
-  } else {
-    entered_chars.push_back(key);
-    emulator.add_char(key);
+  std::cout << "key down!" << std::endl;
+  if (ctrl)
+    std::cout << "^";
+  if (alt)
+    std::cout << "<alt>";
+  if (shift)
+    std::cout << "<shift>";
+  if (meta)
+    std::cout << "<meta>";
+  std::cout << key << std::endl;
+  bool executing = false;
+  {
+    std::unique_lock<std::mutex> lock(buffer_mutex);
+    executing = is_executing;
   }
+  if (!executing) {
+    if (key == '\b') {
+      if (entered_chars.size() != 0) {
+        entered_chars.pop_back();
+        emulator.add_char('\b');
+      }
+    } else if (key == '\n') {
+      std::cout << "entered command: " << entered_chars << std::endl;
+      emulator.add_char('\n');
+      update_terminal(emulator);
 
+      // spin up a thread for command
+
+      auto command_handler = [&]() {
+        std::string command = entered_chars;
+        {
+          std::unique_lock<std::mutex> lock(buffer_mutex);
+          is_executing = true;
+          entered_chars = "";
+        }
+        execute_command(command, emulator);
+        print_prompt();
+        update_by_proxy(emulator);
+        {
+          std::unique_lock<std::mutex> lock(buffer_mutex);
+          entered_chars = {begin(buffer), end(buffer)};
+          emulator.add_input(entered_chars);
+          update_by_proxy(emulator);
+          buffer.clear();
+          is_executing = false;
+        }
+      };
+      std::thread t(command_handler);
+      t.detach();
+    } else {
+      if (ctrl) {
+        if (key >= 'a' && key <= 'z') {
+          emulator.add_char('^');
+          emulator.add_char(key);
+          if (key == 'c') {
+            // control C current command
+            entered_chars = "";
+            emulator.add_char('\n');
+            print_prompt();
+            update_terminal(emulator);
+          }
+        }
+      } else {
+        entered_chars.push_back(key);
+        emulator.add_char(key);
+      }
+    }
+  } else {
+    std::unique_lock<std::mutex> lock(buffer_mutex);
+    if (ctrl) {
+      if (key >= 'a' && key <= 'z') {
+        emulator.add_char('^');
+        emulator.add_char(key);
+        buffer.push_back(key - 'a' + 1);
+        buffer_cv.notify_all();
+      }
+    } else {
+      emulator.add_char(key);
+      update_terminal(emulator);
+      buffer.push_back(key);
+      buffer_cv.notify_all();
+    }
+  }
+  std::cout << "end input key" << std::endl;
   update_terminal(emulator);
 }
 
-std::set<char> parse_options(int argc, char* const argv[], const char* short_opts, struct option long_opts[]) {
+std::set<char> parse_options(int argc, char *const argv[], const char *short_opts, struct option long_opts[]) {
   std::set<char> result;
   while (1) {
     int option_index = 0;
-    int c = getopt_long(argc, argv, short_opts, long_opts, &option_index); 
-    if (c == -1) break;
+    int c = getopt_long(argc, argv, short_opts, long_opts, &option_index);
+    if (c == -1)
+      break;
     result.insert(static_cast<char>(c));
   }
   return result;

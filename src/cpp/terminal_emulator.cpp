@@ -189,11 +189,11 @@ std::string TerminalEmulator::to_html() {
     oss << "\n";
     ++row;
   }
-  std::cout << oss.str() << std::endl;
   return oss.str();
 }
 
 void TerminalEmulator::add_char(char c) {
+  std::unique_lock<std::mutex> hold(lock);
   if (c == '\n') {
     cursor_col = 0;
     if (cursor_row == cells.size() - 1) {
@@ -253,6 +253,7 @@ void TerminalEmulator::add_input(const std::string &input) {
       // handle ANSI
 
       std::istringstream iss(params);
+      std::unique_lock<std::mutex> hold(lock);
 
       switch (final) {
       case 'A': {
@@ -412,17 +413,14 @@ void TerminalEmulator::add_input(const std::string &input) {
         // parse parameters into integers
         std::vector<int> param_ints;
         {
-          std::cout << "parsing params " << params << std::endl;
           std::size_t pos{};
           while (pos < size(params)) {
             try {
               std::size_t len{};
               int val = std::stoi(params.substr(pos), &len);
-              std::cout << "found value " << val << std::endl;
               param_ints.push_back(val);
               pos += len;
               ++pos;
-              std::cout << "pos = " << pos << std::endl;
             } catch (std::invalid_argument) {
               break;
             }

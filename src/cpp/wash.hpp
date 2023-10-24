@@ -142,6 +142,23 @@ private:
       std::this_thread::sleep_for(seconds * 1s);
       return true;
     }
+    if (argv[0] == "flag") {
+      if (argv.size() == 1 || argv[1] == "pride") {
+        output << "\033[48;5;196m                        \033[0m\n\033[48;5;208m                        \033[0m\n\033[48;5;226m                        \033[0m\n\033[48;5;40m                        \033[0m\n\033[48;5;21m                        \033[0m\n\033[48;5;92m                        \033[0m";
+      } else if (argv.size() == 2 && argv[1] == "bi") {
+        output << "\033[48;5;126m                        \033[0m\n\033[48;5;126m                        \033[0m\n\033[48;5;5m                        \033[0m\n\033[48;5;19m                        \033[0m\n\033[48;5;19m                        \033[0m";
+      } else if (argv.size() == 2 && argv[1] == "pan") {
+        output << "\033[48;5;198m                        \033[0m\n\033[48;5;198m                        \033[0m\n\033[48;5;226m                        \033[0m\n\033[48;5;226m                        \033[0m\n\033[48;5;45m                        \033[0m\n\033[48;5;45m                        \033[0m";
+      } else if (argv.size() == 2 && argv[1] == "trans") {
+        output << "\033[48;5;81m                        \033[0m\n\033[48;5;218m                        \033[0m\n\033[48;5;15m                        \033[0m\n\033[48;5;218m                        \033[0m\n\033[48;5;81m                        \033[0m";
+      } else if (argv.size() == 2 && argv[1] == "nb") {
+        output << "\033[48;5;11m                        \033[0m\n\033[48;5;15m                        \033[0m\n\033[48;5;128m                        \033[0m\n\033[48;5;0m                        \033[0m";
+      } else if (argv.size() == 2 && argv[1] == "ace") {
+        output << "\033[48;5;0m                        \033[0m\n\033[48;5;250m                        \033[0m\n\033[48;5;15m                        \033[0m\n\033[48;5;127m                        \033[0m";
+      }
+      output << "\n";
+      return true;
+    }
 
     // 1 path argument commands
     // - cat
@@ -161,12 +178,15 @@ private:
         return true;
       }
       auto new_path = compute_path(cwd, argv[1]);
+      std::cout << "cat with path" << std::endl;
       auto inode = fs.get_inode(new_path);
       if (inode->type == INodeType::INODE_FILE) {
+        std::cout << inode->content << "\n";
         output << inode->content << "\n";
       } else {
         output << "cat <file>\n";
       }
+      std::cout << "post if" << std::endl;
       return true;
     }
     if (argv[0] == "cd") {

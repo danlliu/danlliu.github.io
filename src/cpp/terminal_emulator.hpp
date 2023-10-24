@@ -70,9 +70,10 @@ private:
 template <typename T>
 TerminalEmulator& operator<<(TerminalEmulator& os, T x) {
   std::cout << "operator<< on terminalemulator" << std::endl;
-  // std::unique_lock<std::mutex> hold(os.lock);
   std::ostringstream oss;
   oss << x;
+  std::cout << "pre add input" << std::endl;
   os.add_input(oss.str());
+  std::cout << "post add input" << std::endl;
   return os;
 }

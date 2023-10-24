@@ -31,6 +31,7 @@ std::vector<Project> get_personal_projects() {
   return projects;
 }
 
+#define TAG(x) x
 #define COMPANY(company) company
 #define LOCATION(loc) loc
 #define START(s) s

@@ -1,5 +1,6 @@
 LIST(
 WORK_EXP(
+  TAG("apple"),
   COMPANY("Apple"),
   LOCATION("Cupertino, CA"),
   START("Jun 2023"),
@@ -12,6 +13,7 @@ WORK_EXP(
   )
 ),
 WORK_EXP(
+  TAG("ccsw"),
   COMPANY("Caesar Creek Software"),
   LOCATION("Miamisburg, OH"),
   START("May 2023"),
@@ -23,6 +25,7 @@ WORK_EXP(
   )
 ),
 WORK_EXP(
+  TAG("amazon"),
   COMPANY("Amazon"),
   LOCATION("Sunnyvale, CA"),
   START("May 2022"),
@@ -35,6 +38,7 @@ WORK_EXP(
   )
 ),
 WORK_EXP(
+  TAG("umich"),
   COMPANY("University of Michigan"),
   LOCATION("Ann Arbor, MI"),
   START("Sep 2020"),

@@ -66,6 +66,8 @@ def get_projects():
   return eval(open(SRC/'data/projects').read())
 
 def get_work_exp():
+  def TAG(_id):
+    return _id 
   def COMPANY(x):
     return x
   def LOCATION(x):
@@ -80,7 +82,7 @@ def get_work_exp():
     return x
   def BULLETS(*a):
     return [*a]
-  def WORK_EXP(company, location, start, end, position, bullets):
+  def WORK_EXP(tag, company, location, start, end, position, bullets):
     return {
       'company': company,
       'location': location,

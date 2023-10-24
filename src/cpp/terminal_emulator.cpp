@@ -193,6 +193,7 @@ std::string TerminalEmulator::to_html() {
 }
 
 void TerminalEmulator::add_char(char c) {
+  std::cout << "add_char lock " << c << " " << (int)c << std::endl;
   std::unique_lock<std::mutex> hold(lock);
   if (c == '\n') {
     cursor_col = 0;
@@ -203,8 +204,10 @@ void TerminalEmulator::add_char(char c) {
       cursor_row += 1;
     }
   } else if (c == '\t') {
+    hold.unlock();
     for (int i = 0; i < 4; ++i)
       add_char(' ');
+    hold.lock();
   } else if (c == '\b') {
     if (cursor_col)
       cursor_col -= 1;
@@ -218,8 +221,11 @@ void TerminalEmulator::add_char(char c) {
   } else {
     cells[cursor_row][cursor_col] = {ansi_mode, ansi_fg_256, ansi_bg_256, c};
     cursor_col++;
-    if (cursor_col >= width)
+    if (cursor_col >= width) {
+      hold.unlock();
       add_char('\n');
+      hold.lock();
+    }
   }
 }
 
@@ -253,6 +259,7 @@ void TerminalEmulator::add_input(const std::string &input) {
       // handle ANSI
 
       std::istringstream iss(params);
+      std::cout << "ansi lock" << std::endl;
       std::unique_lock<std::mutex> hold(lock);
 
       switch (final) {

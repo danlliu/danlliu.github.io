@@ -25,4 +25,5 @@ inline void update_terminal_ptr(void* ptr) {
 
 inline void update_by_proxy(TerminalEmulator& emulator) {
   emscripten_proxy_sync(proxy_queue, main_thread, update_terminal_ptr, &emulator);
+  std::cout << "finish update by proxy" << std::endl;
 }

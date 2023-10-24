@@ -1,18 +1,15 @@
 
-#include <emscripten/proxying.h>
 #include <sstream>
 #include <string>
 #include <pthread.h>
+
+#include <emscripten/proxying.h>
 
 #include "data.hpp"
 #include "filesystem.hpp"
 #include "terminal_emulator.hpp"
 #include "terminal_mode_interface.hpp"
 #include "wash.hpp"
-
-#ifndef __EMSCRIPTEN_PTHREADS__
-static_assert(false, "thread support required");
-#endif
 
 pthread_t main_thread;
 std::mutex proxy_queue_mutex;
@@ -91,14 +88,26 @@ void setup_fs() {
       }
       home->children.emplace(std::make_pair("projects", std::move(home_projects)));
     }
-    // /home/
+    // /home/work_exp
     {
-      auto home_education = std::make_unique<FSINode>(INodeType::INODE_DIR, root, std::string{""}, 0755);
-      home->children.emplace(std::make_pair("education", std::move(home_education)));
+      auto work_experience = std::make_unique<FSINode>(INodeType::INODE_DIR, home.get(), std::string{""}, 0755);
+      for (auto exp : get_work_experience()) {
+        std::ostringstream oss;
+        oss << "# " << exp.company << " (" << exp.location << ")\n";
+        oss << exp.start << " - " << exp.end << "\n";
+        oss << exp.position << "\n\n";
+        for (auto bullet : exp.bullets) {
+          oss << "- " << bullet << "\n";
+        }
+        auto exp_node = std::make_unique<FSINode>(INodeType::INODE_FILE, work_experience.get(), oss.str(), 0644);
+        work_experience->children.emplace(std::make_pair(exp.tag, std::move(exp_node)));
+      }
+      home->children.emplace(std::make_pair("work_exp", std::move(work_experience)));
     }
+    // /home/research_exp
     {
-      auto home_education = std::make_unique<FSINode>(INodeType::INODE_DIR, root, std::string{""}, 0755);
-      home->children.emplace(std::make_pair("education", std::move(home_education)));
+      auto research_experience = std::make_unique<FSINode>(INodeType::INODE_DIR, home.get(), std::string{""}, 0755);
+      home->children.emplace(std::make_pair("research_exp", std::move(research_experience)));
     }
     root->children.emplace(std::make_pair("home", std::move(home)));
   }

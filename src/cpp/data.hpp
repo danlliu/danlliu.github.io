@@ -19,6 +19,7 @@ struct Project {
 std::vector<Project> get_personal_projects();
 
 struct WorkExp {
+  std::string tag;
   std::string company;
   std::string location;
   std::string start;

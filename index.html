@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>daniel liu</title>
+
+  <link href="/style/main.css" rel="stylesheet" />
+  <script src="/script/main.js"></script>
+</head>
+
+<body class="bg-black text-white">
+  <div class="h-screen w-screen overflow-scroll snap-proximity snap-y">
+    <!-- Section 0: banner + contents -->
+    <div class="snap-start p-4 min-h-screen w-screen">
+    
+
+<div class="flex flex-row flex-wrap place-items-center font-mono">
+  <div class="basis-0 sm:basis-1/12"></div>
+  <div class="basis-full sm:basis-1/4">
+    <pre class="text-sm md:text-lg lg:text-xl text-purple">
+                                      
+                                      
+                                      
+                                      
+              &#39;&#39;      ,,,,,,          
+             .MM,     dddxMM&#39;         
+             .MM,        .MM&#39;         
+      .cxkkd;.MM,        .MM&#39;         
+     dMNl,,:ONMM,        .MM&#39;         
+    lMW.     dMM,        .MM&#39;         
+    KMO      .MM,        .MM&#39;         
+    KMO      .MM,        .MM&#39;         
+    cMW.     xMM,         WM:         
+     oMNo;,:ONMM,         :WWxlll&#39;    
+      .:dxxo,.ll.           ,cccc.    
+                                      
+                                      
+                                      
+                                      
+
+    </pre>
+  </div>
+  <div class="snap-start md:snap-align-none text-sm lg:text-lg basis-1/2 sm:basis-1/3">
+    <pre>
+daniel@danlliu.github.io
+------------------------
+<span class="text-yellow">OS:</span> macOS, Linux
+<span class="text-yellow">Host:</span> Ann Arbor, MI
+<span class="text-yellow">Theme:</span> Dark
+<span class="text-yellow">Terminal:</span> <span id="banner_terminal">zsh</span>
+<span class="text-yellow">Contact:</span> <a class="text-blue underline" href="mailto:danlliu@umich.edu">danlliu [at] umich.edu</a>
+<span class="text-yellow">Resume:</span> <a class="text-blue underline" href="/resume.pdf" target="_blank">./resume.pdf</a>
+    </pre>
+  </div>
+</div>
+
+<pre class="text-xs md:text-sm lg:text-lg select-none" id="banner_tableofcontents">
+daniel@danlliu.github.io $ ls -al
+
+  <span class="text-blue">d</span><span class="text-yellow">r</span><span class="text-red">w</span><span class="text-green">x</span><span class="text-yellow">r</span><span class="text-gray">-</span><span class="text-green">x</span><span class="text-yellow">r</span><span class="text-gray">-</span><span class="text-green">x</span> <span class="text-gray">   -</span> <span class="text-orange">daniel</span> <a onclick="click_dot()"><span class="text-blue underline cursor-help">.</span></a>
+  <span class="text-aqua">l</span><span class="text-yellow">r</span><span class="text-red">w</span><span class="text-green">x</span><span class="text-yellow">r</span><span class="text-gray">-</span><span class="text-gray">-</span><span class="text-yellow">r</span><span class="text-gray">-</span><span class="text-gray">-</span>    9 <span class="text-orange">daniel</span> <a href="#education"><span class="text-aqua underline">education</span> <span class="hidden sm:inline text-gray">-&gt;</span> <span class="hidden sm:inline text-blue">#education</span></a>
+  <span class="text-aqua">l</span><span class="text-yellow">r</span><span class="text-red">w</span><span class="text-green">x</span><span class="text-yellow">r</span><span class="text-gray">-</span><span class="text-gray">-</span><span class="text-yellow">r</span><span class="text-gray">-</span><span class="text-gray">-</span>   17 <span class="text-orange">daniel</span> <a href="#projects"><span class="text-aqua underline">personal_projects</span> <span class="hidden sm:inline text-gray">-&gt;</span> <span class="hidden sm:inline text-blue">#projects</span></a>
+  <span class="text-aqua">l</span><span class="text-yellow">r</span><span class="text-red">w</span><span class="text-green">x</span><span class="text-yellow">r</span><span class="text-gray">-</span><span class="text-gray">-</span><span class="text-yellow">r</span><span class="text-gray">-</span><span class="text-gray">-</span>   15 <span class="text-orange">daniel</span> <a href="#work_experience"><span class="text-aqua underline">work_experience</span> <span class="hidden sm:inline text-gray">-&gt;</span> <span class="hidden sm:inline text-blue">#work_experience</span></a>
+  <span class="text-aqua">l</span><span class="text-yellow">r</span><span class="text-red">w</span><span class="text-green">x</span><span class="text-yellow">r</span><span class="text-gray">-</span><span class="text-gray">-</span><span class="text-yellow">r</span><span class="text-gray">-</span><span class="text-gray">-</span>   19 <span class="text-orange">daniel</span> <a href="#research_experience"><span class="text-aqua underline">research_experience</span> <span class="hidden sm:inline text-gray">-&gt;</span> <span class="hidden sm:inline text-blue">#research_experience</span></a>
+  <span class="text-aqua">l</span><span class="text-yellow">r</span><span class="text-red">w</span><span class="text-green">x</span><span class="text-yellow">r</span><span class="text-gray">-</span><span class="text-gray">-</span><span class="text-yellow">r</span><span class="text-gray">-</span><span class="text-gray">-</span>    6 <span class="text-orange">daniel</span> <a href="#awards"><span class="text-aqua underline">awards</span> <span class="hidden sm:inline text-gray">-&gt;</span> <span class="hidden sm:inline text-blue">#awards</span></a>
+  <span class="text-aqua">l</span><span class="text-yellow">r</span><span class="text-red">w</span><span class="text-green">x</span><span class="text-yellow">r</span><span class="text-gray">-</span><span class="text-gray">-</span><span class="text-yellow">r</span><span class="text-gray">-</span><span class="text-gray">-</span>    7 <span class="text-orange">daniel</span> <a href="#contact"><span class="text-aqua underline">contact</span> <span class="hidden sm:inline text-gray">-&gt;</span> <span class="hidden sm:inline text-blue">#contact</span></a>
+  <span>.</span><span class="text-yellow">r</span><span class="text-red">w</span><span class="text-green">x</span><span class="text-yellow">r</span><span class="text-gray">-</span><span class="text-gray">-</span><span class="text-yellow">r</span><span class="text-gray">-</span><span class="text-gray">-</span> 251k <span class="text-orange">daniel</span> <a href="/resume.pdf" target="_blank"><span class="text-green underline">resume</span></a>
+</pre>
+    </div>
+    <!-- Section 1: education -->
+    <div class="snap-start p-4 min-h-screen w-screen" id="education">
+    <h1 class="m-4 font-mono text-3xl">$ cd ~/education</h1>
+<p class="m-4 font-mono text-2xl">$ ls</p>
+
+<div class="m-6 p-4 rounded border-purple border-2">
+  <h2 class="text-2xl font-extrabold m-4">University of Michigan: Ann Arbor</h2>
+  <h3 class="text-xl font-bold m-2">College of Literature, Science, and the Arts</h3>
+  <h3 class="text-lg m-2">
+    B.S.Chem in Computer Science and Chemistry
+    <span class="inline-block text-aqua">anticipated May 2024</span>
+  </h3>
+  <h3 class="text-xl font-bold m-2">Ross School of Business</h3>
+  <h3 class="text-lg m-2">
+    Bachelors of Business Administration
+    <span class="inline-block text-aqua">anticipated May 2024</span>
+  </h3>
+</div>
+
+<h2 class="m-4 snap-start md:snap-align-none font-mono text-lg md:text-2xl">$ cat relevant_coursework.txt</h2>
+
+<div class="m-6 flex gap-4 flex-row flex-wrap">
+  
+  <div class="snap-start md:snap-align-none basis-full md:basis-1/3 grow p-4 rounded border-blue border-2">
+    <h3 class="font-bold text-md md:text-lg">Introduction to Operating Systems</h3>
+    <ul class="text-sm md:text-base list-disc list-inside">
+      
+      <li>threads and synchronization</li>
+      
+      <li>virtual memory management</li>
+      
+      <li>socket programming</li>
+      
+    </ul>
+  </div>
+  
+  <div class="snap-start md:snap-align-none basis-full md:basis-1/3 grow p-4 rounded border-blue border-2">
+    <h3 class="font-bold text-md md:text-lg">Compiler Construction</h3>
+    <ul class="text-sm md:text-base list-disc list-inside">
+      
+      <li>x64 assembly</li>
+      
+      <li>abstract syntax tree manipulation</li>
+      
+      <li>register allocation</li>
+      
+    </ul>
+  </div>
+  
+  <div class="snap-start md:snap-align-none basis-full md:basis-1/3 grow p-4 rounded border-blue border-2">
+    <h3 class="font-bold text-md md:text-lg">Introduction to Computer Security</h3>
+    <ul class="text-sm md:text-base list-disc list-inside">
+      
+      <li>cryptography</li>
+      
+      <li>web security: SQLi, XSS, CSRF</li>
+      
+      <li>application security: buffer overflows</li>
+      
+    </ul>
+  </div>
+  
+  <div class="snap-start md:snap-align-none basis-full md:basis-1/3 grow p-4 rounded border-blue border-2">
+    <h3 class="font-bold text-md md:text-lg">Web Systems</h3>
+    <ul class="text-sm md:text-base list-disc list-inside">
+      
+      <li>dynamic web applications</li>
+      
+      <li>JavaScript programming</li>
+      
+      <li>search engine algorithms</li>
+      
+    </ul>
+  </div>
+  
+  <div class="snap-start md:snap-align-none basis-full md:basis-1/3 grow p-4 rounded border-blue border-2">
+    <h3 class="font-bold text-md md:text-lg">User Interface Development</h3>
+    <ul class="text-sm md:text-base list-disc list-inside">
+      
+      <li>responsive web design</li>
+      
+      <li>human-centered design</li>
+      
+      <li>Bootstrap CSS framework</li>
+      
+    </ul>
+  </div>
+  
+  <div class="snap-start md:snap-align-none basis-full md:basis-1/3 grow p-4 rounded border-blue border-2">
+    <h3 class="font-bold text-md md:text-lg">Introduction to Computer Organization</h3>
+    <ul class="text-sm md:text-base list-disc list-inside">
+      
+      <li>ARM assembly</li>
+      
+      <li>processor design</li>
+      
+      <li>low-level code optimization</li>
+      
+    </ul>
+  </div>
+  
+</div>
+    </div>
+    <!-- Section 2: projects -->
+    <div class="snap-start p-4 min-h-screen w-screen" id="projects">
+    <h1 class="m-4 font-mono text-3xl">$ cd ~/projects</h1>
+<p class="m-4 font-mono text-2xl">$ fzf</p>
+
+<div class="m-6 p-4 rounded border-green border-2">
+  <pre class="text-aqua">&gt; <input class="bg-black w-9/12 rounded text-white border-1 border-gray focus:outline-none focus:border-green" type="text" placeholder="search..." id="project_search_bar"></pre>
+  <pre class="text-gray flex flex-row gap-4">
+   <span>  <span id="projects_result_count">6 / 6</span></span>
+   <div class="h-px bg-gray flex-grow my-auto"></div>
+  </pre>
+<div id="projects_results">
+</div>
+<hr class="m-4"/>
+<div id="projects_descriptions">
+  
+  <div id="project_personalweb" class="hidden">
+    <h1 class="mx-4 text-xl">danlliu.github.io</h1>
+    
+    <a class="inline-block p-2" href="https://github.com/danlliu/danlliu.github.io" target="_blank"><img class="inline-block align-middle" src="assets/github.png" height="16" width="16"/> <span class="align-middle text-sm"> view GitHub repository</span></a>
+    
+    <p class="m-2 p-2">The third iteration of my personal website! I&#39;ve updated my website design, inspired by the neofetch command, and added a few new easter eggs! This project uses a wide variety of languages and frameworks: HTML, Tailwind CSS, and JS for the front end; Python and Jinja for rendering templates; Makefiles for setting up the build system; GitHub Actions for CI/CD onto the public-facing domain; and C++ and WebAssembly for the easter eggs!</p>
+  </div>
+  
+  <div id="project_dvim" class="hidden">
+    <h1 class="mx-4 text-xl">dvim</h1>
+    
+    <a class="inline-block p-2" href="https://github.com/danlliu/dvim" target="_blank"><img class="inline-block align-middle" src="assets/github.png" height="16" width="16"/> <span class="align-middle text-sm"> view GitHub repository</span></a>
+    
+    <p class="m-2 p-2">A homegrown terminal text editor, inspired by vim and neovim. Written in C++, utilizing the ncurses library to display the TUI.</p>
+  </div>
+  
+  <div id="project_cppserver" class="hidden">
+    <h1 class="mx-4 text-xl">cppserver</h1>
+    
+    <a class="inline-block p-2" href="https://github.com/danlliu/cppserver" target="_blank"><img class="inline-block align-middle" src="assets/github.png" height="16" width="16"/> <span class="align-middle text-sm"> view GitHub repository</span></a>
+    
+    <p class="m-2 p-2">A webserver written in C++! After a few years of using Flask, I wondered how hard it would be to write up a similar program in C++. What started as satisfying my curiosity ended up being a full-fledged web server, complete with a simple templating engine!</p>
+  </div>
+  
+  <div id="project_armstdlib" class="hidden">
+    <h1 class="mx-4 text-xl">armstdlib</h1>
+    
+    <a class="inline-block p-2" href="https://github.com/danlliu/armstdlib" target="_blank"><img class="inline-block align-middle" src="assets/github.png" height="16" width="16"/> <span class="align-middle text-sm"> view GitHub repository</span></a>
+    
+    <p class="m-2 p-2">A collection of data structures and algorithms written in ARMv8 assembly! Inspired heavily by the C and C++ standard libraries.</p>
+  </div>
+  
+  <div id="project_flasm" class="hidden">
+    <h1 class="mx-4 text-xl">flasm</h1>
+    
+    <a class="inline-block p-2" href="https://github.com/danlliu/flasm" target="_blank"><img class="inline-block align-middle" src="assets/github.png" height="16" width="16"/> <span class="align-middle text-sm"> view GitHub repository</span></a>
+    
+    <p class="m-2 p-2">A collection of data structures and algorithms written in x86_64 assembly! Inspired heavily by the C and C++ standard libraries.</p>
+  </div>
+  
+  <div id="project_pdp" class="hidden">
+    <h1 class="mx-4 text-xl">pdp</h1>
+    
+    <a class="inline-block p-2" href="https://github.com/danlliu/pdp" target="_blank"><img class="inline-block align-middle" src="assets/github.png" height="16" width="16"/> <span class="align-middle text-sm"> view GitHub repository</span></a>
+    
+    <p class="m-2 p-2">An assembler and simulator for the PDP-1 computer&#34;s assembly language</p>
+  </div>
+  
+  <div id="project_beepboop" class="hidden">
+    <h1 class="mx-4 text-xl">beepboop</h1>
+    
+    <a class="inline-block p-2" href="https://github.com/danlliu/beepboop" target="_blank"><img class="inline-block align-middle" src="assets/github.png" height="16" width="16"/> <span class="align-middle text-sm"> view GitHub repository</span></a>
+    
+    <p class="m-2 p-2">An esoteric programming language where you only have &#34;beep&#34; and &#34;boop&#34;</p>
+  </div>
+  
+</div>
+</div>
+
+<script>
+  let projects_projectdata = [{"name": "danlliu.github.io", "id": "personalweb", "tags": ["web", "html", "css", "js", "tailwind"], "github": "https://github.com/danlliu/danlliu.github.io", "description": "The third iteration of my personal website! I've updated my website design, inspired by the neofetch command, and added a few new easter eggs! This project uses a wide variety of languages and frameworks: HTML, Tailwind CSS, and JS for the front end; Python and Jinja for rendering templates; Makefiles for setting up the build system; GitHub Actions for CI/CD onto the public-facing domain; and C++ and WebAssembly for the easter eggs!"}, {"name": "dvim", "id": "dvim", "tags": ["c++", "cpp"], "github": "https://github.com/danlliu/dvim", "description": "A homegrown terminal text editor, inspired by vim and neovim. Written in C++, utilizing the ncurses library to display the TUI."}, {"name": "cppserver", "id": "cppserver", "tags": ["c++", "cpp", "web", "socket"], "github": "https://github.com/danlliu/cppserver", "description": "A webserver written in C++! After a few years of using Flask, I wondered how hard it would be to write up a similar program in C++. What started as satisfying my curiosity ended up being a full-fledged web server, complete with a simple templating engine!"}, {"name": "armstdlib", "id": "armstdlib", "tags": ["armv8", "asm"], "github": "https://github.com/danlliu/armstdlib", "description": "A collection of data structures and algorithms written in ARMv8 assembly! Inspired heavily by the C and C++ standard libraries."}, {"name": "flasm", "id": "flasm", "tags": ["x86", "x64", "asm"], "github": "https://github.com/danlliu/flasm", "description": "A collection of data structures and algorithms written in x86_64 assembly! Inspired heavily by the C and C++ standard libraries."}, {"name": "pdp", "id": "pdp", "tags": ["asm", "c++", "cpp"], "github": "https://github.com/danlliu/pdp", "description": "An assembler and simulator for the PDP-1 computer\"s assembly language"}, {"name": "beepboop", "id": "beepboop", "tags": ["js", "programming language", "esolang"], "github": "https://github.com/danlliu/beepboop", "description": "An esoteric programming language where you only have \"beep\" and \"boop\""}];
+</script>
+<script src="/script/project_search.js"></script>
+    </div>
+    <!-- Section 3: work experience -->
+    <div class="snap-start p-4 min-h-screen w-screen" id="work_experience">
+    <h1 class="m-4 font-mono text-3xl">$ cd ~/work_experience</h1>
+<p class="m-4 font-mono text-2xl">$ cat *</p>
+
+
+<div class="snap-start m-4 p-4 rounded-xl border-2 border-yellow">
+  <h2 class="m-2 text-xl font-bold">Apple</h2>
+  <h3 class="m-2 text-lg font-bold">Cupertino, CA</h3>
+  
+  <h4 class="m-2 text-lg font-bold">Jun 2023 – Aug 2023</h4>
+  
+  <hr class="border-white"/>
+  <h4 class="m-2 text-lg">Software Engineering Intern: WebKit / JavaScriptCore</h4>
+  <ul class="m-2 list-disc list-inside">
+    
+    <li>Developed a new WebAssembly interpreter for Apple's JavaScriptCore framework, improving startup time and memory usage by 7% compared to existing WebAssembly infrastructure</li>
+    
+    <li>Shipped over 14,000 lines of C++ and handwritten assembly to implement the core WebAssembly specification, giving the new interpreter similar runtime performance to the existing WebAssembly runtime environment</li>
+    
+    <li>Check out my commits at <a class="text-blue underline" href="https://github.com/WebKit/WebKit/pulls?q=is%3Apr+author%3Adanlliu" target="_blank">WebKit's GitHub repository</a>!</li>
+    
+  </ul>
+</div>
+
+<div class="snap-start m-4 p-4 rounded-xl border-2 border-yellow">
+  <h2 class="m-2 text-xl font-bold">Caesar Creek Software</h2>
+  <h3 class="m-2 text-lg font-bold">Miamisburg, OH</h3>
+  
+  <h4 class="m-2 text-lg font-bold">May 2023 – Jun 2023</h4>
+  
+  <hr class="border-white"/>
+  <h4 class="m-2 text-lg">Software Engineering Intern</h4>
+  <ul class="m-2 list-disc list-inside">
+    
+    <li>Performed control flow vulnerability research, binary reverse engineering, and hardware firmware extraction</li>
+    
+    <li>Collaborated with a team of interns to discover vulnerabilities in existing commercial products</li>
+    
+  </ul>
+</div>
+
+<div class="snap-start m-4 p-4 rounded-xl border-2 border-yellow">
+  <h2 class="m-2 text-xl font-bold">Amazon</h2>
+  <h3 class="m-2 text-lg font-bold">Sunnyvale, CA</h3>
+  
+  <h4 class="m-2 text-lg font-bold">May 2022 – Jul 2022</h4>
+  
+  <hr class="border-white"/>
+  <h4 class="m-2 text-lg">Software Engineering Intern: Lab126</h4>
+  <ul class="m-2 list-disc list-inside">
+    
+    <li>Collaborated with full time SDEs and other interns to integrate a front-end Android app developed in Kotlin with existing APIs and new ML models to provide users with a wide range of responsive and intelligent functionalities</li>
+    
+    <li>Developed and updated user-facing content to improve user experience and incorporate new technical features</li>
+    
+    <li>Added quality assurance and user engagement code to provide engineers with meaningful data about what features of the app were engaged with the most</li>
+    
+  </ul>
+</div>
+
+<div class="snap-start m-4 p-4 rounded-xl border-2 border-yellow">
+  <h2 class="m-2 text-xl font-bold">University of Michigan</h2>
+  <h3 class="m-2 text-lg font-bold">Ann Arbor, MI</h3>
+  
+  <h4 class="m-2 text-lg font-bold">Sep 2020 – None</h4>
+  
+  <hr class="border-white"/>
+  <h4 class="m-2 text-lg">Instructional Aide</h4>
+  <ul class="m-2 list-disc list-inside">
+    
+    <li>Served on the teaching staff of three main-track (Programming and Introductory Data Structures; Data Structures and Algorithms; Introduction to Computer Organization), and one upper-level (Introduction to Computer Security) computer science courses, teaching roughly 5500 students across nine semesters</li>
+    
+    <li>Helped students debug coding projects involving C++, C, Python, x86, and Go; understand lecture material through regularly scheduled office hours and lab sections; and build confidence in their coding abilities</li>
+    
+    <li>Developed lab assignments, coding projects, course notes, and exam questions to reinforce and measure student understanding of course material</li>
+    
+    <li>Collaborated with course staff and professors to ensure a seamless student experience, leading effort on key tasks such as exam creation, grading, and new project development</li>
+    
+  </ul>
+</div>
+
+    </div>
+    <!-- Section 4: research experience -->
+    <div class="snap-start p-4 min-h-screen w-screen" id="work_experience">
+    <h1 class="m-4 font-mono text-3xl">$ cd ~/research_experience</h1>
+<p class="m-4 font-mono text-2xl">$ echo *</p>
+
+
+<div class="snap-start m-4 p-4 rounded-xl border-2 border-orange">
+  <h2 class="m-2 text-xl font-bold">University of Michigan</h2>
+  <h3 class="m-2 text-lg font-bold">Advisor: Dr. Paul Grubbs</h3>
+  
+  <h4 class="m-2 text-lg font-bold">Sep 2023 – None</h4>
+  
+  <hr class="border-white"/>
+  <ul class="m-2 list-disc list-inside">
+    
+    <li>Analyzed the security of cryptographic protocols used in zero-knowledge proofs, examining the security and integrity of zero-knowledge proof-based blockchain systems</li>
+    
+  </ul>
+</div>
+
+<div class="snap-start m-4 p-4 rounded-xl border-2 border-orange">
+  <h2 class="m-2 text-xl font-bold">University of Michigan</h2>
+  <h3 class="m-2 text-lg font-bold">Advisors: Dr. Trevor Mudge, Dr. Ronald Dreslinski</h3>
+  
+  <h4 class="m-2 text-lg font-bold">Jan 2022 – Jun 2022</h4>
+  
+  <hr class="border-white"/>
+  <ul class="m-2 list-disc list-inside">
+    
+    <li>Developed C++ simulators for validating a new hardware accelerator specialized for handling pattern matching in temporal graphs</li>
+    
+    <li>Demonstrated a performance increase of up to three orders of magnitude compared to state-of-the-art algorithms run on GPUs</li>
+    
+    <li><a class="text-blue" href="https://tnm.engin.umich.edu/wp-content/uploads/sites/353/2023/03/2022.10.Mint_An_Accelerator_For_Mining_Temporal_Motifs.pdf" target="_blank">Published in MICRO 2022</a></li>
+    
+  </ul>
+</div>
+
+<div class="snap-start m-4 p-4 rounded-xl border-2 border-orange">
+  <h2 class="m-2 text-xl font-bold">University of Michigan</h2>
+  <h3 class="m-2 text-lg font-bold">Advisor: Dr. Manos Kapritsos</h3>
+  
+  <h4 class="m-2 text-lg font-bold">May 2021 – Dec 2021</h4>
+  
+  <hr class="border-white"/>
+  <ul class="m-2 list-disc list-inside">
+    
+    <li>Improved Dafny, a formal verification language, to implement detection of matching loops, a condition where the proof engine times out on an ever-expanding set of facts</li>
+    
+    <li>Worked towards detecting time-consuming matching loops early on through runtime dtection of patterns that may generate matching loops</li>
+    
+  </ul>
+</div>
+
+<div class="snap-start m-4 p-4 rounded-xl border-2 border-orange">
+  <h2 class="m-2 text-xl font-bold">University of Michigan</h2>
+  <h3 class="m-2 text-lg font-bold">Advisor: Dr. Melanie Sanford</h3>
+  
+  <h4 class="m-2 text-lg font-bold">Aug 2019 – None</h4>
+  
+  <hr class="border-white"/>
+  <ul class="m-2 list-disc list-inside">
+    
+    <li>Developed a combined compuational and experimental method to expand the substrate scope of transannular C–H activation and functionalization</li>
+    
+    <li>Utilized Python and Bash scripting to create high-throughput infrastructure allowing the screening of hundres of structures computationally and confirmed these results through experimental methodology</li>
+    
+  </ul>
+</div>
+
+    </div>
+    <!-- Section 5: awards -->
+    <div class="snap-start p-4 min-h-screen w-screen" id="awards">
+    <h1 class="m-4 font-mono text-3xl">$ cd ~/awards</h1>
+<p class="m-4 font-mono text-2xl">$ find .</p>
+
+
+<div class="m-4 p-4 rounded-xl border-2 border-red">
+  <h2 class="m-2 text-xl font-bold">Goldwater Scholarship</h2>
+  <h4 class="m-2 text-lg font-bold">2022</h4>
+  <hr class="border-white"/>
+  <p class="m-2">The Goldwater Scholarship is awarded annualy to less than 500 undergraduate students across the nation for students who intend to pursue research careers in STEM disciplines and demonstrate potential as leaders in research.</p>
+</div>
+
+    </div>
+    <!-- Section 6: contact -->
+    <div class="snap-start p-4 min-h-screen w-screen" id="contact">
+    <h1 class="m-4 font-mono text-3xl">$ whoami</h1>
+
+<div class="m-4">
+  <h1 class="m-4 text-purple text-6xl">daniel liu</h1>
+  <h2 class="m-4 text-yellow text-3xl">esoteric language connoisseur, assembly geek, and just an overall nerd</h2>
+  <h3 class="m-4 text-3xl">let's get in touch</h3>
+  <p class="m-4 align-middle">
+    <span class="inline-block align-middle">email:</span> <a class="inline-block align-middle m-2 text-xl" href="mailto:danlliu@umich.edu">&lt;danlliu [at] umich.edu&gt;</a><br/>
+    <span class="inline-block align-middle">github:</span> <a class="inline-block align-middle m-2 text-xl" href="https://www.github.com/danlliu" target="_blank">&lt;@danlliu&gt;</a><br/>
+    <span class="inline-block align-middle">linkedin:</span> <a class="inline-block align-middle m-2 text-xl" href="https://www.linkedin.com/in/danlliu" target="_blank">&lt;/in/danlliu&gt;</a><br/>
+  </p>
+  <span class="m-4 inline-block align-middle"><img class="inline-block" src="assets/github.png" width="16" height="16"/> <span class="align-middle">check out my website's <a href="https://www.github.com/danlliu/danlliu.github.io">source on GitHub</a> (you might find some fun easter eggs!)</span></span>
+</div>
+    </div>
+  </div>
+</body>
+
+</html>

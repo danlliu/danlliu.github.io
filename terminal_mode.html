@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="style/main.css" rel="stylesheet"/>
+    <script src="coi-serviceworker.min.js"></script>
+    <script defer src="script/terminal_mode.js"></script>
+    <script defer src="script/terminal_mode_interface.js"></script>
+  </head>
+  <body class="bg-black text-white p-8">
+    <div class="m-4">
+      <h1 class="text-xl">secret terminal mode!</h1>
+      <p>oh hello! you found this! enjoy :D</p>
+      <p>(the terminal size is fixed, since resizing is a pain)</p>
+    </div>
+    <!-- hack so tailwind finds these classes lmao -->
+    <div class="bg-gray/50"></div>
+    <div class="bg-black"></div>
+    <div class="bg-red"></div>
+    <div class="bg-blue"></div>
+    <div class="bg-yellow"></div>
+    <div class="bg-green"></div>
+    <div class="bg-aqua"></div>
+    <div class="bg-purple"></div>
+    <div class="bg-white"></div>
+    <pre id="text-content" class="rounded border-2 border-white p-2" style="width: 122ch">loading...</pre>
+  </body>
+</html>
